@@ -96,8 +96,6 @@
 			$("#jquery_jplayer_1").jPlayer( "play" );
 			
 		})
-			
-		
 		
 		$(".audio-prev").click(function() {
 			$("#jquery_jplayer_1").jPlayer( "clearMedia" );
@@ -206,6 +204,170 @@
 			
 			return false;
 		})
+		
+		
+		// Попап с видео на странице "Участники"
+		
+		$("#participantsTable .video-link").click(function() {
+			
+			
+			var curUrl = $(this).attr("href");
+			var popupTitle = $(this).parents("tr").find(".participant-item .descr .cont span").html();
+			
+			$("#participantsTable tr").removeClass("act");
+			$(this).parents("tr").addClass("act");
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var nextAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var prevAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			
+			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
+			$(".simple-video-popup .video-next .cont").html(nextButtonText)
+			
+			$(".simple-video-popup .simple-video-content").html("<iframe width='100%' height='400' src='"+curUrl+"' frameborder='0' allowfullscreen></iframe>")
+			
+			$(".simple-video-popup .popup-title").html(popupTitle);
+			
+			openPopup("simpleVideoPopup");
+			
+			
+			return false;
+		});
+		
+		$(".simple-video-popup .video-next").click(function() {
+
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var nextVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			}
+			
+			$("#participantsTable tr.act").removeClass("act");
+			nextVideoRow.addClass("act");
+			
+			var nextUrl = nextVideoRow.find(".video-link").attr("href");
+			
+			$(".simple-video-popup .popup-title").html(nextVideoRow.find(".participant-item .descr .cont span").html())
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var nextVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var prevVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevVideoRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextVideoRow.find(".participant-item .descr .cont span").html();
+			
+			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
+			$(".simple-video-popup .video-next .cont").html(nextButtonText)
+			
+			$(".simple-video-popup .simple-video-content").html("<iframe width='100%' height='400' src='"+nextUrl+"' frameborder='0' allowfullscreen></iframe>")
+			
+		})
+		
+		$(".simple-video-popup .video-prev").click(function() {
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var prevVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).last();
+			}
+			
+			$("#participantsTable tr.act").removeClass("act");
+			prevVideoRow.addClass("act");
+			
+			$(".simple-video-popup .popup-title").html(prevVideoRow.find(".participant-item .descr .cont span").html())
+			
+			var prevUrl = prevVideoRow.find(".video-link").attr("href");
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var nextVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".video-link").length
+			}).length) {
+				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).first();
+			} else {
+				var prevVideoRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".video-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevVideoRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextVideoRow.find(".participant-item .descr .cont span").html();
+			
+			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
+			$(".simple-video-popup .video-next .cont").html(nextButtonText)
+			
+			$(".simple-video-popup .simple-video-content").html("<iframe width='100%' height='400' src='"+nextUrl+"' frameborder='0' allowfullscreen></iframe>")
+			
+		});
+		
+		
 		
 		
 		// Селекты и чекбоксы
@@ -738,6 +900,9 @@ function closePopup() {
 		}
 		if ($(this).hasClass("player-popup")) {
 			$("#jquery_jplayer_1").jPlayer( "stop" );
+		}
+		if ($(this).hasClass("simple-video-popup")) {
+			$(".simple-video-content iframe").remove();
 		}
   });
 }
