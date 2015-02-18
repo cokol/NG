@@ -42,52 +42,52 @@
 		$(".audio-next").click(function() {
 			$("#jquery_jplayer_1").jPlayer( "clearMedia" );
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var nextAudioRow = $("#participantsTable tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			}
 			
-			$("#participantsTable tr.act").removeClass("act");
+			$(".participants-list .participant-item.act").removeClass("act");
 			nextAudioRow.addClass("act");
 			
 			var nextUrl = nextAudioRow.find(".audio-link").attr("href");
 			$("#jp_container_1 .jp-title").html(nextAudioRow.find(".audio-link").data("title"));
 			
-			$(".player-popup .popup-title").html(nextAudioRow.find(".participant-item .descr .cont span").html())
+			$(".player-popup .popup-title").html(nextAudioRow.find(".participant-name .descr .cont span").html())
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var nextAudioRow = $("#participantsTable tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var prevAudioRow = $("#participantsTable tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -100,52 +100,52 @@
 		$(".audio-prev").click(function() {
 			$("#jquery_jplayer_1").jPlayer( "clearMedia" );
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var prevAudioRow = $("#participantsTable tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).last();
 			}
 			
-			$("#participantsTable tr.act").removeClass("act");
+			$(".participants-list .participant-item.act").removeClass("act");
 			prevAudioRow.addClass("act");
 			
-			$(".player-popup .popup-title").html(prevAudioRow.find(".participant-item .descr .cont span").html())
+			$(".player-popup .popup-title").html(prevAudioRow.find(".participant-name .descr .cont span").html())
 			
 			var prevUrl = prevAudioRow.find(".audio-link").attr("href");
 			$("#jp_container_1 .jp-title").html(prevAudioRow.find(".audio-link").data("title"))
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var nextAudioRow = $("#participantsTable tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var prevAudioRow = $("#participantsTable tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -155,42 +155,42 @@
 			
 		});
 		
-		$("#participantsTable .audio-link").click(function() {
+		$(".participants-list .audio-link").click(function() {
 			openPopup("playerPopup");
 			
 			var curUrl = $(this).attr("href");
 			var curTitle = $(this).data("title");
-			var popupTitle = $(this).parents("tr").find(".participant-item .descr .cont span").html();
+			var popupTitle = $(this).parents(".participant-item").find(".participant-name .descr .cont span").html();
 			
-			$("#participantsTable tr").removeClass("act");
-			$(this).parents("tr").addClass("act");
+			$(".participants-list .participant-item").removeClass("act");
+			$(this).parents(".participant-item").addClass("act");
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var nextAudioRow = $("#participantsTable tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
 			}).length) {
-				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).first();
 			} else {
-				var prevAudioRow = $("#participantsTable tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".audio-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -208,41 +208,41 @@
 		
 		// Попап с видео на странице "Участники"
 		
-		$("#participantsTable .video-link").click(function() {
+		$(".participants-list .video-link").click(function() {
 			
 			
 			var curUrl = $(this).attr("href");
-			var popupTitle = $(this).parents("tr").find(".participant-item .descr .cont span").html();
+			var popupTitle = $(this).parents(".participant-item").find(".participant-name .descr .cont span").html();
 			
-			$("#participantsTable tr").removeClass("act");
-			$(this).parents("tr").addClass("act");
+			$(".participants-list .participant-item").removeClass("act");
+			$(this).parents(".participant-item").addClass("act");
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var nextAudioRow = $("#participantsTable tr").filter(function () {
+				var nextAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var prevAudioRow = $("#participantsTable tr").filter(function () {
+				var prevAudioRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)
@@ -259,51 +259,51 @@
 		
 		$(".simple-video-popup .video-next").click(function() {
 
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var nextVideoRow = $("#participantsTable tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			}
 			
-			$("#participantsTable tr.act").removeClass("act");
+			$(".participants-list .participant-item.act").removeClass("act");
 			nextVideoRow.addClass("act");
 			
 			var nextUrl = nextVideoRow.find(".video-link").attr("href");
 			
-			$(".simple-video-popup .popup-title").html(nextVideoRow.find(".participant-item .descr .cont span").html())
+			$(".simple-video-popup .popup-title").html(nextVideoRow.find(".participant-name .descr .cont span").html())
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var nextVideoRow = $("#participantsTable tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var prevVideoRow = $("#participantsTable tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevVideoRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextVideoRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevVideoRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextVideoRow.find(".participant-name .descr .cont span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)
@@ -314,51 +314,51 @@
 		
 		$(".simple-video-popup .video-prev").click(function() {
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var prevVideoRow = $("#participantsTable tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).last();
 			}
 			
-			$("#participantsTable tr.act").removeClass("act");
+			$(".participants-list .participant-item.act").removeClass("act");
 			prevVideoRow.addClass("act");
 			
-			$(".simple-video-popup .popup-title").html(prevVideoRow.find(".participant-item .descr .cont span").html())
+			$(".simple-video-popup .popup-title").html(prevVideoRow.find(".participant-name .descr .cont span").html())
 			
 			var prevUrl = prevVideoRow.find(".video-link").attr("href");
 			
-			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var nextVideoRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var nextVideoRow = $("#participantsTable tr").filter(function () {
+				var nextVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			}
 			
-			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+			if ($(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
 			}).length) {
-				var prevVideoRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item.act").prevAll(".participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).first();
 			} else {
-				var prevVideoRow = $("#participantsTable tr").filter(function () {
+				var prevVideoRow = $(".participants-list .participant-item").filter(function () {
 					return $(this).find(".video-link").length
 				}).last();
 			}
 			
-			var prevButtonText = prevVideoRow.find(".participant-item .descr .cont span").html();
-			var nextButtonText = nextVideoRow.find(".participant-item .descr .cont span").html();
+			var prevButtonText = prevVideoRow.find(".participant-name .descr .cont span").html();
+			var nextButtonText = nextVideoRow.find(".participant-name .descr .cont span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)

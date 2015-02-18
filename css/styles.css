@@ -3144,7 +3144,7 @@ nav ul.submenu li {
 	padding:11px 20px 12px 20px;
 }
 
-.participant-item {
+.participant-name {
 	display:block;
   position:relative;
 	min-height:65px;
@@ -3154,11 +3154,11 @@ nav ul.submenu li {
 	background:none;
 }
 
-.participant-item:hover {
+.participant-name:hover {
   text-decoration:none !important;
 }
 
-.participant-item .pic {
+.participant-name .pic {
   width:65px;
 	height:65px;
 	position:absolute;
@@ -3166,27 +3166,27 @@ nav ul.submenu li {
 	top:0;
 }
 
-.participant-item .pic img {
+.participant-name .pic img {
   display:block;
 	width:65px;
 	height:65px;
 	border-radius:50%;
 }
 
-.participant-item .descr {
+.participant-name .descr {
   font-family:ProximaNovaBold;
 	font-size:18px;
 	line-height:22px;
 	text-transform:uppercase;
 }
 
-.participant-item .descr .cont {
+.participant-name .descr .cont {
   display:table-cell;
 	height:65px;
 	vertical-align:middle;
 }
 
-.participant-item:hover .descr span {
+.participant-name:hover .descr span {
   background:url(../images/ul-1.png) 0 bottom repeat-x;
 }
 
