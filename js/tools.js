@@ -4,6 +4,318 @@
 	
 		makeUp();
 		
+		// Переход по анкорам
+		
+		$("a").click(function() {
+			if ($("a[name='"+$(this).attr("href")+"']").length) {
+				$("html,body").animate({
+					scrollTop: $("a[name='"+$(this).attr("href")+"']").offset().top
+				},1000)
+				return false;
+			}
+		})
+		
+		// Аудио попап
+		
+		if ($("#jquery_jplayer_1").length) {
+		
+			$("#jquery_jplayer_1").jPlayer({
+				ready: function (event) {
+					$(this).jPlayer("setMedia", {
+						title: "",
+						mp3: ""
+					});
+				},
+				swfPath: "../../dist/jplayer",
+				supplied: "mp3",
+				wmode: "window",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
+			
+		}
+			
+		$(".audio-next").click(function() {
+			$("#jquery_jplayer_1").jPlayer( "clearMedia" );
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var nextAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			}
+			
+			$("#participantsTable tr.act").removeClass("act");
+			nextAudioRow.addClass("act");
+			
+			var nextUrl = nextAudioRow.find(".audio-link").attr("href");
+			$("#jp_container_1 .jp-title").html(nextAudioRow.find(".audio-link").data("title"));
+			
+			$(".player-popup .popup-title").html(nextAudioRow.find(".participant-item .descr .cont span").html())
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var nextAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var prevAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			
+			$(".player-popup .audio-prev .cont").html(prevButtonText)
+			$(".player-popup .audio-next .cont").html(nextButtonText)
+			
+			$("#jquery_jplayer_1").jPlayer("setMedia", {mp3: nextUrl});
+			$("#jquery_jplayer_1").jPlayer( "play" );
+			
+		})
+			
+		
+		
+		$(".audio-prev").click(function() {
+			$("#jquery_jplayer_1").jPlayer( "clearMedia" );
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var prevAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).last();
+			}
+			
+			$("#participantsTable tr.act").removeClass("act");
+			prevAudioRow.addClass("act");
+			
+			$(".player-popup .popup-title").html(prevAudioRow.find(".participant-item .descr .cont span").html())
+			
+			var prevUrl = prevAudioRow.find(".audio-link").attr("href");
+			$("#jp_container_1 .jp-title").html(prevAudioRow.find(".audio-link").data("title"))
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var nextAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var prevAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			
+			$(".player-popup .audio-prev .cont").html(prevButtonText)
+			$(".player-popup .audio-next .cont").html(nextButtonText)
+			
+			$("#jquery_jplayer_1").jPlayer("setMedia", {mp3: prevUrl});
+			$("#jquery_jplayer_1").jPlayer( "play" );
+			
+		});
+		
+		$("#participantsTable .audio-link").click(function() {
+			openPopup("playerPopup");
+			
+			var curUrl = $(this).attr("href");
+			var curTitle = $(this).data("title");
+			var popupTitle = $(this).parents("tr").find(".participant-item .descr .cont span").html();
+			
+			$("#participantsTable tr").removeClass("act");
+			$(this).parents("tr").addClass("act");
+			
+			if ($("#participantsTable tr.act").nextAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var nextAudioRow = $("#participantsTable tr.act").nextAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var nextAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			}
+			
+			if ($("#participantsTable tr.act").prevAll("tr").filter(function () {
+				return $(this).find(".audio-link").length
+			}).length) {
+				var prevAudioRow = $("#participantsTable tr.act").prevAll("tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).first();
+			} else {
+				var prevAudioRow = $("#participantsTable tr").filter(function () {
+					return $(this).find(".audio-link").length
+				}).last();
+			}
+			
+			var prevButtonText = prevAudioRow.find(".participant-item .descr .cont span").html();
+			var nextButtonText = nextAudioRow.find(".participant-item .descr .cont span").html();
+			
+			$(".player-popup .audio-prev .cont").html(prevButtonText)
+			$(".player-popup .audio-next .cont").html(nextButtonText)
+			
+			$(".player-popup .popup-title").html(popupTitle);
+			
+			$("#jp_container_1 .jp-title").html(curTitle)
+			
+			$("#jquery_jplayer_1").jPlayer("setMedia", {mp3: curUrl});
+			$("#jquery_jplayer_1").jPlayer( "play" );
+			
+			return false;
+		})
+		
+		
+		// Селекты и чекбоксы
+		
+		$( "select").selectmenu();
+		
+		$( "input[type=checkbox], input[type=radio]").iCheck();
+		
+		// Зависимые селекты
+		
+		$("select").filter(function() {
+			return $(this).data("childselect")
+		}).each(function() {
+			var parentSelect = $(this);
+			var childSelect = $("select#"+$(this).data("childselect"));
+			childSelect.find("option").filter(function() {
+				return $(this).data("parentval") != parentSelect.val() && $(this).attr("value") != "all"
+			}).attr("disabled",true)
+			parentSelect.selectmenu({
+				change: function( event, ui ) {
+					childSelect.find("option").attr("disabled",false).filter(function() {
+						return $(this).data("parentval") != parentSelect.val()
+					}).attr("disabled",true);
+					childSelect.val("all")
+					childSelect.selectmenu("refresh");
+				}
+			});
+
+			parentSelect.trigger("change");
+			
+			
+		})
+		
+		$(".filter-button-trigger").on("click",function() {
+			$(".page-filter-bottom").slideToggle(250);
+			$(this).toggleClass("act")
+		});
+		
+		
+		// Forms
+	
+		if ($("input:text").length) {
+			$("input:text").each(function() {
+				if ($(this).val()) {
+					$(this).prev(".placeholder").hide();
+				}
+			});
+		}
+
+		$("input.phone").mask("+7 (999) 999-99-99");
+
+		validateForms();
+		
+		// $("form").submit(function() {
+			// if ($(this).valid()) {
+				
+				// $(this).find("input:text").val("");
+				// $(this).find("textarea").val("");
+			
+				// $(this).find(".placeholder").show();
+			
+			// }
+		// });
+		
+		$("input:text, input:password, textarea").each(function() {
+			$(this).addClass("initial");
+			
+			if ($(this).prop("tagName") == "INPUT" || $(this).prop("tagName") == "TEXTAREA") {
+				// if (!$(this).parents(".input-wrapper").length) $(this).wrap("<div class='input-wrapper'></div>");
+				if ($(this).hasClass("phone") || $(this).hasClass("form-date")) {
+					$(this).focus(function() {
+						$(this).removeClass("initial");
+						$(this).parents(".form-item").find(".placeholder").hide();
+					});
+				} else {
+					$(this).focus(function() {
+						$(this).parents(".form-item").find(".placeholder").addClass("placeholder-initial");
+					});
+					$(this).keydown(function() {
+						$(this).removeClass("initial");
+						$(this).parents(".form-item").find(".placeholder").hide();
+					});
+				}
+				$(this).blur(function() {
+					$(this).prev().prev(".placeholder").hide();
+					$(this).parents(".form-item").find(".placeholder").removeClass("placeholder-initial");
+					if (!$(this).val()) {
+						$(this).addClass("initial");
+						$(this).parents(".form-item").find(".placeholder").show();
+					}
+				});
+			} else {
+				$(this).focus(function() {
+					$(this).removeClass("initial");
+					$(this).parents(".form-item").find(".placeholder").hide();
+				});
+				$(this).blur(function() {
+					if (!$(this).val()) {
+						$(this).addClass("initial");
+						$(this).parents(".form-item").find(".placeholder").show();
+					}
+				});
+			}
+				
+			$(this).parents(".form-item").find(".placeholder").click(function() {
+				$(this).focus();
+			});
+			
+		});
+		
 		// Пагинация с динамической подгрузкой
 		
 		$(".paged-content").each(function() {
@@ -68,16 +380,15 @@
 	
 		// Попап профиля в шапке
 		
-		$(".header-profile .userpic").click(function() {
-			if (!$(".header-profile-popup").hasClass("open")) {
-				$(".header-profile-popup").fadeIn(100,function() {
-					$(".header-profile-popup").addClass("open")
-				});
-			} else {
-				$(".header-profile-popup").fadeOut(100,function() {
-					$(".header-profile-popup").removeClass("open")
-				});
-			}
+		$(".header-profile").on("mouseenter", function() {
+			$(".header-profile-popup").fadeIn(100,function() {
+				$(".header-profile-popup").addClass("open")
+			});
+		});
+		$(".header-profile").on("mouseleave", function() {
+			$(".header-profile-popup").fadeOut(100,function() {
+				$(".header-profile-popup").removeClass("open")
+			});
 		})
 		
 		$("body").click(function(e) {
@@ -363,7 +674,7 @@
   });
 	
 	$(window).resize(function() {
-		//pupMakeup();
+		pupMakeup();
 	})
 
 })(jQuery);
@@ -424,6 +735,9 @@ function closePopup() {
     $(this).hide();
 		if ($(this).hasClass("video-popup")) {
 			$(this).remove()
+		}
+		if ($(this).hasClass("player-popup")) {
+			$("#jquery_jplayer_1").jPlayer( "stop" );
 		}
   });
 }
@@ -526,7 +840,7 @@ function videoPopup(videoId) {
 					asNavFor: '#dummySlider'
 				});
 				
-				
+				$("#dummySlider").slick("slickGoTo",$(".video-thumbnails .act").prevAll().not(".slick-cloned").length)
 				
 			}
 			
@@ -588,3 +902,122 @@ function paginatorMakeup(items) {
 	}
 	
 }
+
+function validateForms() {
+  
+  $("form").each(function() {
+    $(this).validate({
+      focusInvalid: false,
+      sendForm : false,
+      errorPlacement: function(error, element) {
+        // element.parents(".input-wrapper").addClass("input-wrapper-error");
+        if (element.attr("errortext")) {
+          error.html(element.attr("errortext"))
+        }
+        error.insertAfter(element);
+        element.prev(".placeholder").addClass("placeholder-error")
+        if (element[0].tagName == "SELECT") {
+          element.parents(".form-item").find(".param-selector").addClass("param-sel-error")
+        }
+        
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        // $(element).parents(".input-wrapper").removeClass("input-wrapper-error");
+        $(element).removeClass(errorClass);
+        $(element).next(".error").remove();
+        $(element).prev(".placeholder").removeClass("placeholder-error");
+        if ($(element)[0].tagName == "SELECT") {
+          $(element).parents(".form-item").find(".param-selector").removeClass("selector-error")
+        }
+      },
+      invalidHandler: function(form, validatorcalc) {
+          var errors = validatorcalc.numberOfInvalids();
+          if (errors && validatorcalc.errorList[0].element.tagName == "INPUT") {                    
+              validatorcalc.errorList[0].element.focus();
+          }
+      }
+    });
+    
+    if ($(this).find("input.email").length) {
+      $(this).find("input.email").rules('add', {
+        email: true,
+        messages: {
+          required:  "Введите правильный e-mail"
+        }
+      });
+    }
+    
+    if ($(this).find(".custom-date").length) {
+      $(this).find(".custom-date").rules('add', {
+				russianDate: true
+      });
+    }
+    
+    if ($(this).find("input.email").length && $(this).find("input.phone").length) {
+      var thisField = $(this).find("input.phone");
+      var relatedField = $(this).find("input.email");
+      thisField.rules('add', {
+        required: function(element) {
+          if (relatedField.val() == "") {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+      var thisField2 = $(this).find("input.email");
+      var relatedField2 = $(this).find("input.phone");
+      thisField2.rules('add', {
+        required: function(element) {
+          if (relatedField2.val() == "") {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+    }
+    
+    $(document).mouseup(function (e) {
+      var container = $("form");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+          $(".error-wrapper").remove();
+      }
+    });
+		
+		$(document).mouseup(function (e) {
+      var container = $(".tooltip");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+          $(".tooltip").fadeOut(150);
+      }
+    });
+    
+  });  
+    
+}
+
+jQuery.extend(jQuery.validator.messages, {
+    required: "Пожалуйста, заполните это поле!",
+    remote: "Please fix this field.",
+    email: "Введите правильный e-mail",
+    url: "Please enter a valid URL.",
+    date: "Введите дату в формате ДД.ММ.ГГГГ.",
+    dateISO: "Please enter a valid date (ISO).",
+    number: "Please enter a valid number.",
+    digits: "Please enter only digits.",
+    creditcard: "Please enter a valid credit card number.",
+    equalTo: "Please enter the same value again.",
+    accept: "Please enter a value with a valid extension.",
+    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+    minlength: jQuery.validator.format("Please enter at least {0} characters."),
+    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+    min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+});

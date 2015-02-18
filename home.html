@@ -22,10 +22,14 @@
 <script src="js/jquery.fileupload/js/jquery.fileupload-validate.js"></script>
 <script src="js/jquery.fileupload/js/jquery.fileupload-ui.js"></script>
 <script src="js/slick.min.js"></script>
+<script src="js/masked.input.js"></script>
 <script type="text/javascript" src="js/jquery.plugin.js"></script>
 <script src="js/jquery.countdown.min.js"></script>
 <script src="js/jquery.countdown-ru.js"></script>
 <script type="text/javascript" src="js/grayscale.js"></script>
+
+<script src="js/jquery.icheck.min.js"></script>
+<script src="js/jquery-ui-1.11.3.custom/jquery-ui.min.js"></script>
 <script src="js/tools.js"></script>
 <meta name="viewport" content="width=1024"/>
 </head>
@@ -80,14 +84,18 @@
 			<ul>
 				<li class="expandable">
 					<div class="cont">
-						<a href="#about">О конкурсе</a>
+						<a href="#">О конкурсе</a>
 					</div>
 					<ul class="submenu">
-						<li><a href="#">Новости</a></li>
-						<li><a href="#">Партнеры</a></li>
-						<li><a href="#">Очень длинное название</a></li>
-						<li><a href="#">Пункт 3</a></li>
-						<li><a href="#">Пункт 4</a></li>
+						<li><a href="#rules">Правила участия</a></li>
+						<li><a href="#about">О проекте</a></li>
+						<li><a href="#invitation">Приглашаем к участию</a></li>
+						<li><a href="#commission">Конкурсная комиссия</a></li>
+						<li><a href="#experts">Экспертный совет</a></li>
+						<li><a href="#video">Видео</a></li>
+						<li><a href="#news">Новости</a></li>
+						<li><a href="#dates">Памятные даты</a></li>
+						<li><a href="#organizers">Организаторы</a></li>
 					</ul>
 				</li>
 				<li>
@@ -282,6 +290,8 @@
 		
 		<!-- Правила участия -->
 		
+		<a name="#rules"></a>
+		
 		<section id="main_rules">
 			<div class="main-rules-wrapper">
 				<div class="center-wrapper">
@@ -353,6 +363,8 @@
 		
 		<div class="main-hr"></div>
 	
+	<a name="#about"></a>
+	
 		<!-- about -->
 		<section id="main_about">
 			<h2 class="main-block-ttl">О проекте</h2>
@@ -398,6 +410,8 @@
 		</section>
 		<!-- about END -->
 		
+		<a name="#invitation"></a>
+		
 		<!-- registration -->
 		<section id="main_registration" class="cn-block cn-top-outer cn-bottom-outer">
 			<div class="reg">
@@ -431,6 +445,8 @@
 			</div>
 		</section>
 		<!-- registration END -->
+		
+		<a name="#commission"></a>
 		
 		<!-- Конкурсная комиссия -->
 		
@@ -542,6 +558,8 @@
 		</section>
 		
 		<!-- Конкурсная комиссия ENd -->
+		
+		<a name="#experts"></a>
 		
 		<!-- Экспернтый совет -->
 		
@@ -737,6 +755,8 @@
 		
 		<!-- Экспернтый совет END -->
 		
+		<a name="#video"></a>
+		
 		<!-- Видео -->
 		
 		<section id="main_video">
@@ -915,6 +935,8 @@
 		
 		<!-- Видео END -->
 		
+		<a name="#news"></a>
+		
 		<!-- Новости -->
 		
 		<section id="main_news">
@@ -932,6 +954,9 @@
 									</div>
 									<div class="ttl">
 										Группа Премьер министра — звездная поддержка
+									</div>
+									<div class="date">
+										08 сентября 2014
 									</div>
 									<div class="text">
 										<p>Струна, и это особенно заметно у Чарли Паркера или Джона Колтрейна, продолжает перекрестный пласт, хотя это довольно часто напоминает песни Джима Моррисона и Патти Смит.</p>
@@ -1138,6 +1163,8 @@
 		
 		<!-- Новости END -->
 		
+		<a name="#dates"></a>
+		
 		<!-- Памятные даты -->
 		
 		<section id="main_dates">
@@ -1276,6 +1303,8 @@
 		
 		<!-- Памятные даты END -->
 		
+		<a name="#organizers"></a>
+		
 		<!-- partners -->
 		<section id="main_partners">
 			<div class="partners-org">
@@ -1287,6 +1316,7 @@
 					<a href="#" class="partners-org-1"><img src="images/partner-1.png" alt="" width="196" height="218"/></a>
 					<a href="#" class="partners-org-2"><img src="images/partner-2.png" alt="" width="226" height="89"/></a>
 					<a href="#" class="partners-org-3"><img src="images/partner-3.png" alt="" width="131" height="111"/></a>
+					<a href="#" class="partners-org-4"><img src="files/logo-my-docs.png" alt=""/></a>
 				</div>
 			</div>
 			<div class="partners-support">
