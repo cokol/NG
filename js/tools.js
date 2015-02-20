@@ -614,13 +614,45 @@
 		
 		// Экспертный совет
 		
-		$(".item-expandable").hover(function() {
-			$("body").append("<div class='tint' style='display:none' />");
-			$(".tint").fadeIn(100)
-		},function() {
-			$(".tint").remove();
+		$(".item-expandable").on("click",function() {
+			if (!$(this).hasClass("item-expandable-expanded")) {
+				$(this).addClass("item-expandable-expanded");
+				$("body").append("<div class='tint expandable-tint' style='display:none' />");
+				$(".tint").fadeIn(100)
+			}
+		});
+		
+		$(".experts-inner-item").not(".item-expandable").on("click",function() {
+			if (!$(this).hasClass("item-expandable-act")) {
+				$(this).addClass("item-expandable-act");
+				$("body").append("<div class='tint expandable-tint' style='display:none' />");
+				$(".tint").fadeIn(100)
+			}
 		})
-	
+		
+		$("body").on("click",".expandable-tint",function() {
+			$(".item-expandable-act").removeClass("item-expandable-act")
+			$(".item-expandable-expanded").removeClass("item-expandable-expanded")
+			$(this).remove();
+		});
+		
+		jQuery(document).keydown(function(e){
+			if (e == null) { // ie
+				keycode = event.keyCode;
+			} else { // mozilla
+				keycode = e.which;
+			}
+			
+			if(keycode == 27){ // escape, close box
+				if ($(".item-expandable-expanded").length || $(".item-expandable-act").length) {
+					$(".item-expandable-expanded").removeClass("item-expandable-expanded")
+					$(".item-expandable-act").removeClass("item-expandable-act")
+					$(".expandable-tint").remove();
+				}
+			}
+			
+		});
+		
 		// Видео на главной, клик на превью
 		
 		$("body").on("click",".video-item",function() {
@@ -726,7 +758,7 @@
 		
 		if ($(".video-slider").length) {
 			$(".video-slider").slick({
-				dots: false,
+				dots: true,
 				slidesToShow: 3,
 				slidesToScroll: 3,
 				adaptiveHeight: true,
@@ -904,6 +936,8 @@
         }
       }
     });
+		
+		hashHandle();
 
   });
 
@@ -1275,3 +1309,172 @@ jQuery.extend(jQuery.validator.messages, {
     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 });
+
+function getHashVars() {
+	var hashString = window.location.hash;
+	hashString = hashString.replace("#","");
+	
+	var hashArray = hashString.split("&");
+	
+	var hashVars = new Array();
+	
+	for (var i in hashArray) {
+		hashVar = hashArray[i].split("=");
+		
+		hashVars[hashVar[0]] = hashVar[1];
+		
+	}
+	
+	return hashVars;
+	
+}
+
+function hashSet(name,val) {
+  var hashString = window.location.hash;
+	hashString = hashString.replace("#","");
+	
+	var hashArray = hashString.split("&");
+	
+	var hashStringNew = "";
+	
+	var newVar = true;
+	
+	if (hashString.length) {
+		for (var i in hashArray) {
+			hashVar = hashArray[i].split("=");
+			
+			if (hashVar[0] == name) {
+				hashVar[1] = val;
+			}
+			
+			hashStringNew += hashVar[0] +"="+ hashVar[1] + "&";
+			
+		}
+		
+		for (var i in hashArray) {
+			hashVar = hashArray[i].split("=");
+			
+			if (hashVar[0] == name) {
+				newVar = false;
+				break;
+			}
+			
+		}
+		
+	}
+	
+	if (newVar) {
+		hashStringNew += name +"="+ val + "&";
+	}
+	
+	hashStringNew = hashStringNew.substring(0, hashStringNew.length - 1);
+	
+	window.location.hash = hashStringNew;
+	
+}
+
+function hashHandle() {
+  // Разбор хэша. Функция возвращает массив hashVars, в котором ключ - имя переменной
+	
+	hashVars = getHashVars();
+	
+	// Формируем хэш из data-hash активных элементов, у которых он есть
+	
+	$(".act").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		hashSet(hashArr[0],hashArr[1]);
+	})
+	
+	$("option:selected").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		hashSet(hashArr[0],hashArr[1]);
+	})
+	
+	// Меняем хэш по клику на элементе
+	
+	$("*").not("option").filter(function() {
+		return $(this).data("hash")
+	}).click(function() {
+		hashArr = $(this).data("hash").split("=");
+		hashSet(hashArr[0],hashArr[1]);
+	});
+	
+	// Меняем хэш при изменении значения селекта
+	
+	$("select").filter(function() {
+		return $(this).find(":selected").data("hash")
+	}).on("change",function() {
+		hashArr = $(this).find(":selected").data("hash").split("=");
+		hashSet(hashArr[0],hashArr[1]);
+	});
+	
+	// Кликаем на элемент, если значение переменной в хэше равно значению переменной этого элемента
+	
+	$("*").not("option").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		
+		if (hashArr[0] in hashVars && hashVars[hashArr[0]] == hashArr[1]) {
+			$(this).trigger("click");
+		}
+	});
+	
+	// Меняем значение селекта в соответствии со значением переменной в хэше
+	
+	$("option").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		if (hashArr[0] in hashVars && hashVars[hashArr[0]] == hashArr[1]) {
+			$(this).parents("select").val($(this).attr("value"))
+		}
+	});
+	$("select").trigger("change");
+}
+
+function hashGo(obj) {
+	
+	var hashString = obj.attr("href");
+	hashString = hashString.replace("#","");
+	
+	var hashArray = hashString.split("&");
+	
+	var hashVars = new Array();
+	
+	for (var i in hashArray) {
+		hashVar = hashArray[i].split("=");
+		
+		hashVars[hashVar[0]] = hashVar[1];
+		
+	}
+	
+	// Кликаем на элемент, если значение переменной в хэше равно значению переменной этого элемента
+	
+	$("*").not("option").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		
+		if (hashArr[0] in hashVars && hashVars[hashArr[0]] == hashArr[1]) {
+			$(this).trigger("click");
+		}
+	});
+	
+	// Меняем значение селекта в соответствии со значением переменной в хэше
+	
+	$("option").filter(function() {
+		return $(this).data("hash")
+	}).each(function() {
+		hashArr = $(this).data("hash").split("=");
+		if (hashArr[0] in hashVars && hashVars[hashArr[0]] == hashArr[1]) {
+			$(this).parents("select").val($(this).attr("value"))
+		}
+	});
+	$("select").trigger("change");
+	
+}

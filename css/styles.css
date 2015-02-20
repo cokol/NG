@@ -1803,9 +1803,9 @@ nav ul.submenu li {
 	font-size: 18px;
 	line-height: 18px;
 	color: #f60800;
-	padding: 17px 0 11px 1px;
+	padding: 17px 0 0 1px;
 	overflow: hidden;
-	max-height:36px;
+	max-height: 54px;
 }
 
 .main-news .news-item .date {
@@ -1841,8 +1841,7 @@ nav ul.submenu li {
   padding:0 20px 10px 20px;
 }
 
-.main-news .slick-dots,
-.main-video .slick-dots {
+.slick-dots {
   text-align:center;
 	margin:0;
 	padding:0;
@@ -1853,15 +1852,18 @@ nav ul.submenu li {
   margin:30px 0 0 0;
 }
 
-.main-news .slick-dots li,
-.main-video .slick-dots li {
+.slick-dots li {
   display: inline-block;
-	margin: 0;
-	padding: 0 3px;
+	margin: 0 !important;
+	padding: 0 3px !important;
+	background:none !important;
 }
 
-.main-news .slick-dots button,
-.main-video .slick-dots button {
+.slick-dots li:before {
+  display:none;
+}
+
+.slick-dots button {
   font-size: 0;
 	line-height: 0;
 	color: transparent;
@@ -1875,8 +1877,7 @@ nav ul.submenu li {
 	padding: 0;
 }
 
-.main-news .slick-dots .slick-active button,
-.main-video .slick-dots .slick-active button {
+.slick-dots .slick-active button {
   background:#f60800;
 }
 
@@ -2442,6 +2443,7 @@ nav ul.submenu li {
 	margin:0 10px 20px 10px;
 	position:relative;
 	background:none;
+	cursor:pointer;
 }
 
 .experts-inner-item .pic {
@@ -2521,7 +2523,7 @@ nav ul.submenu li {
 	bottom:0;
 }
 
-.experts-inner-item.item-expandable:hover .descr-bottom .post:after {
+.experts-inner-item.item-expandable-expanded .descr-bottom .post:after {
 	display:none;
 }
 
@@ -2542,30 +2544,31 @@ nav ul.submenu li {
 	display:block;
 }
 
-.experts-inner-item.item-expandable:hover .show-more {
+.experts-inner-item.item-expandable-expanded .show-more {
   display:none;
 }
 
-.experts-inner-item.item-expandable:hover:before {
+.experts-inner-item.item-expandable-expanded:before {
   z-index:80;
 	opacity:1;
 }
 
-.experts-inner-item.item-expandable:hover {
+.experts-inner-item.item-expandable-act,
+.experts-inner-item.item-expandable-expanded {
   z-index:101;
 }
 
-.experts-inner-item.item-expandable:hover .descr {
+.experts-inner-item.item-expandable-expanded .descr {
   background:#fff;
 	color:#393939;
 	height:auto;
 }
 
-.experts-item-inner.item-expandable:hover .name {
+.experts-item-inner.item-expandable-expanded .name {
   color:#000;
 }
 
-.experts-inner-item.item-expandable:hover .descr-bottom .cont {
+.experts-inner-item.item-expandable-expanded .descr-bottom .cont {
   white-space:normal;
 	overflow:visible;
 	height:auto;
@@ -2584,7 +2587,7 @@ nav ul.submenu li {
 	font-weight:normal;
 }
 
-.experts-inner-item:hover .post {
+.experts-inner-item-expanded .post {
   padding:0 0 14px 0;
 }
 
