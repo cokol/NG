@@ -4,6 +4,39 @@
 	
 		makeUp();
 		
+		// Ссылки на динамический контент
+		
+		$(".faq-menu a").click(function() {
+			$(".faq-menu a").removeClass("act");
+			
+			$(this).addClass("act");
+		})
+		
+		$("body").on("click",".ajax-link",function() {
+			
+			var container = $("#"+$(this).data("target"));
+			
+			var url = $(this).attr("href");
+			
+			container.html("<div class='ajax-loader' />");
+				
+			$.get( url, function(data) {
+				contentHtml = data;
+			}).done(function() {
+				container.css({
+					opacity:0
+				}).html(contentHtml).animate({
+					opacity: 1
+				},500);
+				container.css({
+					height: container.height()
+				});
+			});
+			
+			return false;
+			
+		})
+		
 		// Переход по анкорам
 		
 		$("a").click(function() {
@@ -14,6 +47,39 @@
 				return false;
 			}
 		})
+		
+		// if ($("#jquery_jplayer_2").length) {
+		
+			// $("#jquery_jplayer_2").jPlayer({
+				// ready: function (event) {
+					// $(this).jPlayer("setMedia", {
+						// title: "",
+						// mp3: ""
+					// });
+				// },
+				// swfPath: "../../dist/jplayer",
+				// supplied: "mp3",
+				// wmode: "window",
+				// useStateClassSkin: true,
+				// autoBlur: false,
+				// smoothPlayBar: true,
+				// keyEnabled: true,
+				// remainingDuration: true,
+				// toggleDuration: true
+			// });
+			
+		// }
+		
+		// Галерея fancybox
+		
+		$(".fancybox").fancybox({
+			wrapCSS : 'ng-gallery',
+			helpers: {
+				overlay: {
+					locked: false
+				}
+			}
+		});
 		
 		// Аудио попап
 		
@@ -60,7 +126,7 @@
 			var nextUrl = nextAudioRow.find(".audio-link").attr("href");
 			$("#jp_container_1 .jp-title").html(nextAudioRow.find(".audio-link").data("title"));
 			
-			$(".player-popup .popup-title").html(nextAudioRow.find(".participant-name .descr .cont span").html())
+			$(".player-popup .popup-title").html(nextAudioRow.find(".participant-name span").html())
 			
 			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".audio-link").length
@@ -86,8 +152,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -115,7 +181,7 @@
 			$(".participants-list .participant-item.act").removeClass("act");
 			prevAudioRow.addClass("act");
 			
-			$(".player-popup .popup-title").html(prevAudioRow.find(".participant-name .descr .cont span").html())
+			$(".player-popup .popup-title").html(prevAudioRow.find(".participant-name span").html())
 			
 			var prevUrl = prevAudioRow.find(".audio-link").attr("href");
 			$("#jp_container_1 .jp-title").html(prevAudioRow.find(".audio-link").data("title"))
@@ -144,8 +210,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -160,7 +226,7 @@
 			
 			var curUrl = $(this).attr("href");
 			var curTitle = $(this).data("title");
-			var popupTitle = $(this).parents(".participant-item").find(".participant-name .descr .cont span").html();
+			var popupTitle = $(this).parents(".participant-item").find(".participant-name span").html();
 			
 			$(".participants-list .participant-item").removeClass("act");
 			$(this).parents(".participant-item").addClass("act");
@@ -189,8 +255,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name span").html();
 			
 			$(".player-popup .audio-prev .cont").html(prevButtonText)
 			$(".player-popup .audio-next .cont").html(nextButtonText)
@@ -206,13 +272,24 @@
 		})
 		
 		
+		// Попап с видео на детальной странице участника
+		
+		$(".simple-video-link").click(function() {
+			$(".simple-video-popup .simple-video-content").html("<iframe width='100%' height='400' src='"+$(this).attr("href")+"' frameborder='0' allowfullscreen></iframe>")
+			
+			openPopup("simpleVideoPopup");
+			
+			return false;
+			
+		})
+		
 		// Попап с видео на странице "Участники"
 		
 		$(".participants-list .video-link").click(function() {
 			
 			
 			var curUrl = $(this).attr("href");
-			var popupTitle = $(this).parents(".participant-item").find(".participant-name .descr .cont span").html();
+			var popupTitle = $(this).parents(".participant-item").find(".participant-name span").html();
 			
 			$(".participants-list .participant-item").removeClass("act");
 			$(this).parents(".participant-item").addClass("act");
@@ -241,8 +318,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevAudioRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextAudioRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevAudioRow.find(".participant-name span").html();
+			var nextButtonText = nextAudioRow.find(".participant-name span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)
@@ -276,7 +353,7 @@
 			
 			var nextUrl = nextVideoRow.find(".video-link").attr("href");
 			
-			$(".simple-video-popup .popup-title").html(nextVideoRow.find(".participant-name .descr .cont span").html())
+			$(".simple-video-popup .popup-title").html(nextVideoRow.find(".participant-name span").html())
 			
 			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
 				return $(this).find(".video-link").length
@@ -302,8 +379,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevVideoRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextVideoRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevVideoRow.find(".participant-name span").html();
+			var nextButtonText = nextVideoRow.find(".participant-name span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)
@@ -329,7 +406,7 @@
 			$(".participants-list .participant-item.act").removeClass("act");
 			prevVideoRow.addClass("act");
 			
-			$(".simple-video-popup .popup-title").html(prevVideoRow.find(".participant-name .descr .cont span").html())
+			$(".simple-video-popup .popup-title").html(prevVideoRow.find(".participant-name span").html())
 			
 			var prevUrl = prevVideoRow.find(".video-link").attr("href");
 			
@@ -357,8 +434,8 @@
 				}).last();
 			}
 			
-			var prevButtonText = prevVideoRow.find(".participant-name .descr .cont span").html();
-			var nextButtonText = nextVideoRow.find(".participant-name .descr .cont span").html();
+			var prevButtonText = prevVideoRow.find(".participant-name span").html();
+			var nextButtonText = nextVideoRow.find(".participant-name span").html();
 			
 			$(".simple-video-popup .video-prev .cont").html(prevButtonText)
 			$(".simple-video-popup .video-next .cont").html(nextButtonText)
@@ -401,8 +478,20 @@
 			
 		})
 		
+		if ($(".page-filter-bottom").css("display") != "block") {
+			$(".filter-button-trigger").html("Показать фильтр")
+		} else {
+			$(".filter-button-trigger").html("Свернуть фильтр")
+		}
+		
 		$(".filter-button-trigger").on("click",function() {
-			$(".page-filter-bottom").slideToggle(250);
+			$(".page-filter-bottom").slideToggle(250,function() {
+				if ($(".page-filter-bottom").css("display") != "block") {
+					$(".filter-button-trigger").html("Показать фильтр")
+				} else {
+					$(".filter-button-trigger").html("Свернуть фильтр")
+				}
+			});
 			$(this).toggleClass("act")
 		});
 		
@@ -651,7 +740,7 @@
 		
 		if ($(".main-video").length) {
 			$(".main-video").slick({
-				dots: false,
+				dots: true,
 				speed: 600,
 				prevArrow: '<button type="button" class="slick-prev"></button>',
 				nextArrow: '<button type="button" class="slick-next"></button>'

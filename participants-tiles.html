@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>Нашим героям - Участники</title>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700,700italic&subset=latin,cyrillic"/>
 <link rel="stylesheet" href="css/slick.css"/>
 <link rel="stylesheet" href="js/jquery-ui-1.11.3.custom/jquery-ui.css"/>
@@ -90,7 +93,7 @@
 						<a href="#about">О конкурсе</a>
 					</div>
 					<ul class="submenu">
-						<li><a href="#">Новости</a></li>
+						<li><a href="#" class="current">Новости</a></li>
 						<li><a href="#">Партнеры</a></li>
 						<li><a href="#">Очень длинное название</a></li>
 						<li><a href="#">Пункт 3</a></li>
@@ -171,8 +174,8 @@
 						
 						<div class="page-filter-top clearfix">
 							<div class="filter-layout-selector clearfix">
-								<div class="button filter-button filter-button-list act">Список</div>
-								<div class="button filter-button filter-button-tiles">Плитка</div>
+								<div class="button filter-button filter-button-list">Список</div>
+								<div class="button filter-button filter-button-tiles act">Плитка</div>
 							</div>
 							<div class="filter-search">
 								<div class="common-form filter-form filter-search-form">
@@ -280,408 +283,340 @@
 					
 					<!-- У ссылок на аудио .play-link в атрибуте href стоит урл песни, а в data-title - название -->
 					
-					<table class="participants-table participants-list" id="participantsTable">
-						<thead>
-							<tr>
-								<th class="sort-down">
-									<span class="cont">
-										<span class="ico ico-p-name"></span>
-										Название
-									</span>
-								</th>
-								<th>
-									<span class="cont">
-										<span class="ico ico-p-geo"></span>
-										География
-									</span>
-								</th>
-								<th>
-									<span class="cont">
-										<span class="ico ico-p-genre"></span>
-										Жанр
-									</span>
-								</th>
-								<th>
-									<span class="cont">
-										<span class="ico ico-p-content"></span>
-										Контент
-									</span>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="participant-item" class="act">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="images/p-userpic-dummy.png" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Иванов Петр</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
-										</div>
+					<div class="participants-list participants-tiles clearfix" id="participantsTable">
+						<div class="participant-item" class="act">
+							<div class="pic">
+								<img src="files/participant-pic-1.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Иванов Петр</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Новороссийск
+										</span>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Группа «A-Ha»</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Москва
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Поп
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
-										</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Серьезные ребята</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Санкт-Петербург
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Жанр инструментальной музыки
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/03. Leraine.mp3" data-title="Leraine" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
-										</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>30 seconds to mars</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Владивосток
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Поп
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-2.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Группа «A-Ha»</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Москва
+										</span>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Толик шАляпов</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Москва
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-genre">
+									Поп
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Поющие бра</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-3.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Серьезные ребята</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Санкт-Петербург
+										</span>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Гордость страны</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-genre">
+									Жанр инструментальной музыки
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/03. Leraine.mp3" data-title="Leraine" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="images/p-userpic-dummy.png" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Лики молодости</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
-										</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Кукушечка</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-4.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Thirty seconds to mars and back</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Владивосток
+										</span>
 									</div>
-								</td>
-							</tr>
-							<tr class="participant-item">
-								<td>
-									<a href="#" class="participant-name">
-										<div class="pic">
-											<img src="files/p-userpic-1.jpg" />
-										</div>
-										<div class="descr">
-											<div class="cont">
-												<span>Василий певцов</span>
-											</div>
-										</div>
-									</a>
-								</td>
-								<td>
-									<span class="participant-geo">
-										Россия,<br />
-										Новороссийск
-									</span>
-								</td>
-								<td>
-									<span class="participant-genre">
-										Шансон
-									</span>
-								</td>
-								<td>
-									<div class="participant-media clearfix">
-										<div class="participant-media-item">
-											<div class="ttl">Аудио</div>
-											<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
-										</div>
-										<div class="participant-media-sep">+</div>
-										<div class="participant-media-item">
-											<div class="ttl">Видео</div>
-											<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
-										</div>
+								</div>
+								<div class="participant-genre">
+									Поп
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
 									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-5.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Толик шАляпов</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Москва
+										</span>
+									</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
+									</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
+									</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-6.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Поющие бра</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Новороссийск
+										</span>
+									</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
+									</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
+									</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-7.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Гордость страны</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Новороссийск
+										</span>
+									</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
+									</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
+									</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-8.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Лики молодости</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Новороссийск
+										</span>
+									</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/01. Hospital Requiem.mp3" data-title="Hospital Requiem" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
+									</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/3tvscBF8kgw?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
+									</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+						<div class="participant-item">
+							<div class="pic">
+								<img src="files/participant-pic-9.jpg" />
+							</div>
+							<div class="descr">
+								<div class="name-geo">
+									<div class="cont">
+										<a href="#" class="participant-name">
+											<span>Кукушечка</span>
+										</a>
+										<span class="participant-geo">
+											Россия, Новороссийск
+										</span>
+									</div>
+								</div>
+								<div class="participant-genre">
+									Шансон
+								</div>
+								<div class="participant-media clearfix">
+									<div class="participant-media-item">
+										<a href="mp3/02. Foliage Pathway.mp3" data-title="Foliage Pathway" class="ico-play audio-link"></a>
+										<div class="ttl">Слушать</div>
+									</div>
+									<div class="participant-media-sep">+</div>
+									<div class="participant-media-item">
+										<a href="http://www.youtube.com/embed/gpZosEp79eY?autoplay=1" class="ico-play video-link"></a>
+										<div class="ttl">Смотреть</div>
+									</div>
+								</div>
+								<div class="participant-rating">
+									<div class="participant-rating-item rating-1">88</div>
+									<div class="participant-rating-item rating-2">65</div>
+									<div class="participant-rating-item rating-3">34</div>
+									<div class="participant-rating-item rating-4">56</div>
+									<div class="participant-rating-item rating-5">77</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					
 					<!-- Таблица с участниками END -->
 					
