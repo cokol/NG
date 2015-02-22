@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/slick.css"/>
 <link rel="stylesheet" href="js/jquery-ui-1.11.3.custom/jquery-ui.css"/>
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="js/jquery.qtip.custom/jquery.qtip.css" media="all"/>
 <link rel="stylesheet" href="css/styles.css"/>
 <link rel="stylesheet" href="css/chosen.css"/>
 <link href="js/jplayer/dist/skin/ng/css/ng.css" rel="stylesheet" type="text/css" />
@@ -32,6 +33,7 @@
 <script type="text/javascript" src="js/grayscale.js"></script>
 <script type="text/javascript" src="js/jplayer/dist/jplayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.qtip.custom/jquery.qtip.js"></script>
 
 <script type="text/javascript" src="js/fancybox/jquery.fancybox.js"></script>
 <script src="js/jquery.icheck.min.js"></script>
@@ -80,7 +82,7 @@
 			</div>
 		</div>
 		<div class="header-feedback-button">
-			<div class="button button-2">Обратная связь</div>
+			<div class="button button-2" onclick="openPopup('feedbackPopup')">Обратная связь</div>
 		</div>
 	</div>
 </div>
@@ -442,5 +444,346 @@
 </div>
 <!-- footer content END -->
 </footer>
+
+<!-- Popups -->
+
+<div class="popup reg-popup" id="regPopup">
+	<div class="close"></div>
+	<div class="popup-content">
+		<div class="popup-ttl">Регистрация на проекте</div>
+		<div class="common-form reg-form clearfix">
+			<form action="#" method="post" enctype="multipart/form-data">
+				<div class="reg-form-l">
+					<h2>Информация<br />об участнике/коллективе</h2>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_name">Название коллектива&nbsp;<span class="req">*</span></label>
+							<input type="text" name="reg_name" id="reg_name" data-errortext="Текст, для ошибки, который указан в атрибуте data-errortext. Если он есть, то показывается этот текст" required />
+							<div class="form-hint">
+								Например: Иван Петров
+							</div>
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_genre">Жанр&nbsp;<span class="req">*</span></label>
+							<select name="reg_genre" id="reg_genre" required >
+								<option value="">Выберите жанр</option>
+								<option value="1">Классика</option>
+								<option value="2">Рок</option>
+								<option value="3">Поп</option>
+								<option value="4">Рэп</option>
+								<option value="5">Кавер</option>
+							</select>
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_country">Страна&nbsp;<span class="req">*</span></label>
+							<input type="text" name="reg_country" id="reg_country" required />
+							<div class="form-hint">
+								Например: Аргентина
+							</div>
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_city">Город, который вы&nbsp;представляете&nbsp;<span class="req">*</span></label>
+							<input type="text" name="reg_city" id="reg_city" required />
+							<div class="form-hint">
+								Например: Саратов
+							</div>
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_phone">Телефон&nbsp;<span class="req">*</span></label>
+							<input type="text" name="reg_phone" id="reg_phone" class="phone" required />
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_email">Электронная почта&nbsp;<span class="req">*</span></label>
+							<input type="text" name="reg_email" id="reg_email" class="email" required />
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-row clearfix">
+						<div class="form-item">
+							<label for="reg_message">Несколько слов о себе&nbsp;<span class="req">*</span></label>
+							<textarea name="reg_message" id="reg_message" rows="4" required></textarea>
+							<div class="tooltip-link">?</div>
+							<div class="tooltip-cont">
+								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+							</div>
+						</div>
+					</div>
+					<h3>
+						Фотографии
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</h3>
+					<div id="fileupload-foto">
+						<div class="files-list">
+							<table role="presentation">
+							<tbody class="files">
+							</tbody>
+							</table>
+						</div>
+						<div class="window-import-link">
+							<div class="fileinput-button">
+								<span>Загрузить еще</span>
+								<input type="file" name="files[]"/>
+							</div>
+						</div>
+					</div>
+					<!-- The template to display files available for upload -->
+					<script id="template-upload" type="text/x-tmpl">
+							{% for (var i=0, file; file=o.files[i]; i++) { %}
+									<tr class="template-download fade">
+											<td><div class="files-item-name"><div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar" style="width:0"></div></div><span>{%=file.name%}</span></div></td>
+											<td>
+													{% if (!i) { %}
+													<button class="cancel files-item-stop"></button>
+													{% } %}
+													<div class="files-item-error error"></div>
+											</td>
+									</tr>
+							{% } %}
+					</script>
+					<!-- The template to display files available for download -->
+					<script id="template-download" type="text/x-tmpl">
+						{% for (var i=0, file; file=o.files[i]; i++) { %}
+								<tr class="template-download fade">
+										<td><div class="files-item-name"><span>{%=file.name%}</span></div></td>
+										<td>
+											{% if (file.deleteUrl) { %}
+													<button class="delete files-item-del" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+												{% } %}
+												{% if (file.error) { %}
+														<div class="files-item-error">— загрузка файла не удалась из-за <span>{%=file.error%}</span></div>
+												{% } %}
+										</td>
+									</tr>
+							{% } %}
+					</script>
+				</div>
+				<div class="reg-form-r">
+					<h2>Файлы для заявки</h2>
+					
+					<h3>
+						Аудиофайл&nbsp;<span class="req">*</span>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</h3>
+					<div class="form-filelink" id="fileupload-audio">
+						<div class="files-list">
+							<table role="presentation">
+							<tbody class="files">
+							</tbody>
+							</table>
+						</div>
+						<div class="form-filelink-top">
+							<div class="form-filelink-top-file">
+								<div class="window-import-link">
+									<div class="fileinput-button">
+										<span>Загрузить файл</span>
+										<input type="file" name="files[]"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h3>
+						Видеофайл&nbsp;<span class="req">*</span>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</h3>
+					<div class="form-filelink" id="fileupload-video">
+						<div class="files-list">
+							<table role="presentation">
+							<tbody class="files">
+							</tbody>
+							</table>
+						</div>
+						<div class="reg-video-preview">
+							<iframe width="240" height="168" src="https://www.youtube.com/embed/K2cNqaPSHv0" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="form-filelink-top">
+							<div class="form-input">
+								<input type="text" name="reg_video_url" id="reg_video_url" value="http://"/>
+							</div>
+							<div class="form-filelink-top-file">
+								<div class="window-import-link">
+									<div class="fileinput-button">
+										<span>Загрузить файл</span>
+										<input type="file" name="files[]"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="reg-form-b">
+					<div class="form-row clearfix">
+						<div class="form-item form-checkboxes">
+							<label for="reg_rules"><input type="checkbox" name="reg_rules" checked="checked" required />Согласен/на с передачей прав на использование и воспроизведение произведения</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-message form-message-error">
+					<div class="ttl">Ошибка</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-message form-message-success">
+					<div class="ttl">Все прошло успешно</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-footer">
+					<input class="button button-3" type="submit" value="Зарегистрироваться"/>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="popup feedback-popup popup-loading" id="feedbackPopup">
+	<div class="close"></div>
+	<div class="popup-content">
+		<div class="popup-ttl">Обратная связь</div>
+		<p>Создание приверженного покупателя переворачивает пул лояльных изданий. Такое понимание ситуации восходит к Эл Райс, при этом маркетингово-ориентированное издание деятельно детерминирует комплексный повторный контакт, учитывая современные тенденции.</p>
+		<div class="common-form feedback-form clearfix">
+			<form action="#" method="post" enctype="multipart/form-data">
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_name">ФИО&nbsp;<span class="req">*</span></label>
+						<input type="text" name="feedback_name" id="feedback_name" data-errortext="Текст, для ошибки, который указан в атрибуте data-errortext. Если он есть, то показывается этот текст" required />
+						<div class="form-hint">
+							Например: Иван Петров
+						</div>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_questiontype">Тип вопроса&nbsp;<span class="req">*</span></label>
+						<select name="feedback_questiontype" id="feedback_questiontype" required >
+							<option value="">Выберите</option>
+							<option value="1">Классика</option>
+							<option value="2">Рок</option>
+							<option value="3">Поп</option>
+							<option value="4">Рэп</option>
+							<option value="5">Кавер</option>
+						</select>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_phone">Телефон</label>
+						<input type="text" name="feedback_phone" id="feedback_phone" class="phone" />
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_email">Электронная почта&nbsp;<span class="req">*</span></label>
+						<input type="text" name="feedback_email" id="feedback_email" class="email" required />
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_message">Ваше обращение&nbsp;<span class="req">*</span></label>
+						<textarea name="feedback_message" id="feedback_message" rows="4" required></textarea>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item form-radios">
+						<div class="radios-label">Каждый фазан желает знать:</div>
+						<div class="radio-items clearfix">
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- где</label>
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- сидит</label>
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- охотник</label>
+						</div>
+					</div>
+				</div>
+				<div class="feedback-form-b">
+					<div class="form-row clearfix">
+						<div class="form-item form-checkboxes">
+							<label for="feedback_rules"><input type="checkbox" name="feedback_rules" checked="checked" required />С <a href="#">политикой конфиденциальности</a> ознакомлен и согласен</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-message form-message-error">
+					<div class="ttl">Ошибка</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-message form-message-success">
+					<div class="ttl">Все прошло успешно</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-footer">
+					<input class="button button-3" type="submit" value="Отправить"/>
+				</div>
+				<div class="form-req-hint">
+					<span class="req">*</span> &mdash; Поля, обязательные для заполнения
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Popups END -->
+
 </body>
 </html>

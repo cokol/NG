@@ -4,6 +4,45 @@
 	
 		makeUp();
 		
+		// Соцкнопки
+		
+		$(".page-share-arrows").click(function() {
+			if (!$(".page-share-buttons-content").hasClass("on")) {
+				$(".page-share-buttons-content").addClass("on").stop().animate({
+					width: 100
+				})
+				
+			} else {
+				$(".page-share-buttons-content").removeClass("on").stop().animate({
+					width: 0
+				})
+			}
+			$(this).toggleClass("on")
+		})
+		
+		// Тултипы в форме
+	
+		$(".common-form .tooltip-link").each(function() {
+			var tooltipContent = $(this).next(".tooltip-cont").html();
+			$(this).qtip({ // Grab all elements with a non-blank data-tooltip attr.
+				content: tooltipContent,
+				position: {
+					at: 'right center',
+					my: 'left top',
+					adjust: {
+						x: 20
+					}
+				},
+				show: {
+					event: 'click',
+					solo: true
+				},
+				hide: {
+					event: 'unfocus'
+				}
+			});
+		})
+		
 		// Ссылки на динамический контент
 		
 		$(".faq-menu a").click(function() {
@@ -449,7 +488,12 @@
 		
 		// Селекты и чекбоксы
 		
-		$( "select").selectmenu();
+		$("select").selectmenu({
+			change: function( event, ui ) {
+				console.log(ui.item.element)
+				ui.item.element.trigger("click");
+			}
+		});
 		
 		$( "input[type=checkbox], input[type=radio]").iCheck();
 		
@@ -508,7 +552,7 @@
 
 		$("input.phone").mask("+7 (999) 999-99-99");
 
-		validateForms();
+		//validateForms();
 		
 		// $("form").submit(function() {
 			// if ($(this).valid()) {
@@ -876,7 +920,7 @@
       }
     });
 
-    $('.form-select select').chosen({disable_search: true});
+    //$('.form-select select').chosen({disable_search: true});
 
     $('#fileupload-foto').fileupload({
       url: 'js/jquery.fileupload/server/php/',
@@ -924,19 +968,56 @@
         $('#main_registration form').addClass('disabled');
       }
     });
-
-    $('form').validate({
-      submitHandler: function(form) {
-        if (!$('#main_registration form').hasClass('disabled')) {
-          // форму можно отправить
-          alert('Форма отправлена');
-        } else {
-          // форму не отправляем
-          alert('Форма не отправлена');
-        }
-      }
-    });
 		
+		
+		$("form").each(function() {
+			$(this).validate({
+				submitHandler: function(form) {
+					if (!$('#main_registration form').hasClass('disabled')) {
+						// форму можно отправить
+						//alert('Форма отправлена');
+					} else {
+						// форму не отправляем
+						//alert('Форма не отправлена');
+					}
+				},
+				errorPlacement: function(error, element) {
+					if (element.data("errortext")) {
+						error.html(element.data("errortext"))
+					}
+					if (element.attr("type") == "checkbox") {
+						errorContainer = element.parents("label").parent().children().last();
+					} else if (element.attr("type") == "radio") {
+						errorContainer = element.parents("label").parent().children().last();
+					} else {
+						errorContainer = element
+					}
+					
+					error.insertAfter(errorContainer).css({
+						marginTop: -error.outerHeight()/2
+					});
+					error.wrap("<div class='error-wrapper' />");
+					if (element[0].tagName == "SELECT") {
+						element.siblings(".ui-selectmenu-button").addClass("error").removeClass("valid");
+					}
+					
+				},
+				highlight: function(element, errorClass, validClass) {
+					$(element).removeClass("valid").addClass("error");
+					if ($(element)[0].tagName == "SELECT") {
+						$(element).siblings(".ui-selectmenu-button").addClass("error").removeClass("valid");
+					}
+				},
+				unhighlight: function(element, errorClass, validClass) {
+					$(element).addClass("valid").removeClass("error");
+					if ($(element)[0].tagName == "SELECT") {
+						$(element).siblings(".ui-selectmenu-button").removeClass("error").addClass("valid");
+					}
+				}
+			});
+		
+		});
+    
 		hashHandle();
 
   });

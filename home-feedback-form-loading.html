@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8"/>
 <title>Нашим героям</title>
-<!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700,700italic&subset=latin,cyrillic"/>
 <link rel="stylesheet" href="css/slick.css"/>
 <link rel="stylesheet" href="js/jquery-ui-1.11.3.custom/jquery-ui.css"/>
@@ -92,14 +89,18 @@
 			<ul>
 				<li class="expandable">
 					<div class="cont">
-						<a href="#about">О конкурсе</a>
+						<a href="#">О конкурсе</a>
 					</div>
 					<ul class="submenu">
-						<li><a href="#">Новости</a></li>
-						<li><a href="#">Партнеры</a></li>
-						<li><a href="#">Очень длинное название</a></li>
-						<li><a href="#">Пункт 3</a></li>
-						<li><a href="#">Пункт 4</a></li>
+						<li><a href="#rules">Правила участия</a></li>
+						<li><a href="#about">О проекте</a></li>
+						<li><a href="#invitation">Приглашаем к участию</a></li>
+						<li><a href="#commission">Конкурсная комиссия</a></li>
+						<li><a href="#experts">Экспертный совет</a></li>
+						<li><a href="#video">Видео</a></li>
+						<li><a href="#news">Новости</a></li>
+						<li><a href="#dates">Памятные даты</a></li>
+						<li><a href="#organizers">Организаторы</a></li>
 					</ul>
 				</li>
 				<li>
@@ -137,18 +138,24 @@
 	</div>
 	<div class="header-profile">
 		<div class="userpic">
-			<img src="images/header-userpic-dummy.png" />
+			<img src="files/header-userpic.jpg" alt="Иван Петров"/>
 		</div>
 		<div class="header-profile-popup">
 			<div class="header-profile-popup-content">
+				<div class="name">
+					Thirty seconds to Barviha
+				</div>
+				<div class="address">
+					Россия, Санкт-Петербург
+				</div>
 				<a href="#" class="header-profile-link">
-					<div class="ico ico-enter"></div>
-					Войти
+					<div class="ico ico-profile"></div>
+					Профиль
 				</a>
 				<br />
 				<a href="#" class="header-profile-link">
-					<div class="ico ico-register"></div>
-					Зарегистрироваться
+					<div class="ico ico-exit"></div>
+					Выйти
 				</a>
 			</div>
 		</div>
@@ -288,6 +295,8 @@
 		
 		<!-- Правила участия -->
 		
+		<a name="#rules"></a>
+		
 		<section id="main_rules">
 			<div class="main-rules-wrapper">
 				<div class="center-wrapper">
@@ -359,6 +368,8 @@
 		
 		<div class="main-hr"></div>
 	
+	<a name="#about"></a>
+	
 		<!-- about -->
 		<section id="main_about">
 			<h2 class="main-block-ttl">О проекте</h2>
@@ -404,6 +415,8 @@
 		</section>
 		<!-- about END -->
 		
+		<a name="#invitation"></a>
+		
 		<!-- registration -->
 		<section id="main_registration" class="cn-block cn-top-outer cn-bottom-outer">
 			<div class="reg">
@@ -437,6 +450,8 @@
 			</div>
 		</section>
 		<!-- registration END -->
+		
+		<a name="#commission"></a>
 		
 		<!-- Конкурсная комиссия -->
 		
@@ -548,6 +563,8 @@
 		</section>
 		
 		<!-- Конкурсная комиссия ENd -->
+		
+		<a name="#experts"></a>
 		
 		<!-- Экспернтый совет -->
 		
@@ -743,6 +760,8 @@
 		
 		<!-- Экспернтый совет END -->
 		
+		<a name="#video"></a>
+		
 		<!-- Видео -->
 		
 		<section id="main_video">
@@ -921,6 +940,8 @@
 		
 		<!-- Видео END -->
 		
+		<a name="#news"></a>
+		
 		<!-- Новости -->
 		
 		<section id="main_news">
@@ -939,6 +960,9 @@
 									<div class="ttl">
 										Группа Премьер министра — звездная поддержка
 									</div>
+									<div class="date">
+										08 сентября 2014
+									</div>
 									<div class="text">
 										<p>Струна, и это особенно заметно у Чарли Паркера или Джона Колтрейна, продолжает перекрестный пласт, хотя это довольно часто напоминает песни Джима Моррисона и Патти Смит.</p>
 									</div>
@@ -948,7 +972,7 @@
 										<img src="files/news-2-tmb.jpg" />
 									</div>
 									<div class="ttl">
-										Лев Лещенко — звездная поддержка
+										Лев Лещенко — звездная поддержка и еще пара слов подлиннее
 									</div>
 									<div class="date">
 										08 сентября 2014
@@ -1144,6 +1168,8 @@
 		
 		<!-- Новости END -->
 		
+		<a name="#dates"></a>
+		
 		<!-- Памятные даты -->
 		
 		<section id="main_dates">
@@ -1282,6 +1308,8 @@
 		
 		<!-- Памятные даты END -->
 		
+		<a name="#organizers"></a>
+		
 		<!-- partners -->
 		<section id="main_partners">
 			<div class="partners-org">
@@ -1293,6 +1321,7 @@
 					<a href="#" class="partners-org-1"><img src="images/partner-1.png" alt="" width="196" height="218"/></a>
 					<a href="#" class="partners-org-2"><img src="images/partner-2.png" alt="" width="226" height="89"/></a>
 					<a href="#" class="partners-org-3"><img src="images/partner-3.png" alt="" width="131" height="111"/></a>
+					<a href="#" class="partners-org-4"><img src="files/logo-my-docs.png" alt=""/></a>
 				</div>
 			</div>
 			<div class="partners-support">
@@ -1410,238 +1439,24 @@
 
 <!-- Popups -->
 
-<div class="popup reg-popup" id="regPopup">
-	<div class="close"></div>
-	<div class="popup-content">
-		<div class="popup-ttl">Регистрация на проекте</div>
-		<div class="common-form reg-form clearfix">
-			<form action="#" method="post" enctype="multipart/form-data">
-				<div class="reg-form-l">
-					<h2>Информация<br />об участнике/коллективе</h2>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_name">Название коллектива&nbsp;<span class="req">*</span></label>
-							<input type="text" name="reg_name" id="reg_name" data-errortext="Текст, для ошибки, который указан в атрибуте data-errortext. Если он есть, то показывается этот текст" required />
-							<div class="form-hint">
-								Например: Иван Петров
-							</div>
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_genre">Жанр&nbsp;<span class="req">*</span></label>
-							<select name="reg_genre" id="reg_genre" required >
-								<option value="">Выберите жанр</option>
-								<option value="1">Классика</option>
-								<option value="2">Рок</option>
-								<option value="3">Поп</option>
-								<option value="4">Рэп</option>
-								<option value="5">Кавер</option>
-							</select>
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_country">Страна&nbsp;<span class="req">*</span></label>
-							<input type="text" name="reg_country" id="reg_country" required />
-							<div class="form-hint">
-								Например: Аргентина
-							</div>
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_city">Город, который вы&nbsp;представляете&nbsp;<span class="req">*</span></label>
-							<input type="text" name="reg_city" id="reg_city" required />
-							<div class="form-hint">
-								Например: Саратов
-							</div>
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_phone">Телефон&nbsp;<span class="req">*</span></label>
-							<input type="text" name="reg_phone" id="reg_phone" class="phone" required />
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_email">Электронная почта&nbsp;<span class="req">*</span></label>
-							<input type="text" name="reg_email" id="reg_email" class="email" required />
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<div class="form-row clearfix">
-						<div class="form-item">
-							<label for="reg_message">Несколько слов о себе&nbsp;<span class="req">*</span></label>
-							<textarea name="reg_message" id="reg_message" rows="4" required></textarea>
-							<div class="tooltip-link">?</div>
-							<div class="tooltip-cont">
-								<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-							</div>
-						</div>
-					</div>
-					<h3>
-						Фотографии
-						<div class="tooltip-link">?</div>
-						<div class="tooltip-cont">
-							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-						</div>
-					</h3>
-					<div id="fileupload-foto">
-						<div class="files-list">
-							<table role="presentation">
-							<tbody class="files">
-							</tbody>
-							</table>
-						</div>
-						<div class="window-import-link">
-							<div class="fileinput-button">
-								<span>Загрузить еще</span>
-								<input type="file" name="files[]"/>
-							</div>
-						</div>
-					</div>
-					<!-- The template to display files available for upload -->
-					<script id="template-upload" type="text/x-tmpl">
-							{% for (var i=0, file; file=o.files[i]; i++) { %}
-									<tr class="template-download fade">
-											<td><div class="files-item-name"><div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar" style="width:0"></div></div><span>{%=file.name%}</span></div></td>
-											<td>
-													{% if (!i) { %}
-													<button class="cancel files-item-stop"></button>
-													{% } %}
-													<div class="files-item-error error"></div>
-											</td>
-									</tr>
-							{% } %}
-					</script>
-					<!-- The template to display files available for download -->
-					<script id="template-download" type="text/x-tmpl">
-						{% for (var i=0, file; file=o.files[i]; i++) { %}
-								<tr class="template-download fade">
-										<td><div class="files-item-name"><span>{%=file.name%}</span></div></td>
-										<td>
-											{% if (file.deleteUrl) { %}
-													<button class="delete files-item-del" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-												{% } %}
-												{% if (file.error) { %}
-														<div class="files-item-error">— загрузка файла не удалась из-за <span>{%=file.error%}</span></div>
-												{% } %}
-										</td>
-									</tr>
-							{% } %}
-					</script>
-				</div>
-				<div class="reg-form-r">
-					<h2>Файлы для заявки</h2>
-					
-					<h3>
-						Аудиофайл&nbsp;<span class="req">*</span>
-						<div class="tooltip-link">?</div>
-						<div class="tooltip-cont">
-							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-						</div>
-					</h3>
-					<div class="form-filelink" id="fileupload-audio">
-						<div class="files-list">
-							<table role="presentation">
-							<tbody class="files">
-							</tbody>
-							</table>
-						</div>
-						<div class="form-filelink-top">
-							<div class="form-filelink-top-file">
-								<div class="window-import-link">
-									<div class="fileinput-button">
-										<span>Загрузить файл</span>
-										<input type="file" name="files[]"/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<h3>
-						Видеофайл&nbsp;<span class="req">*</span>
-						<div class="tooltip-link">?</div>
-						<div class="tooltip-cont">
-							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
-						</div>
-					</h3>
-					<div class="form-filelink" id="fileupload-video">
-						<div class="files-list">
-							<table role="presentation">
-							<tbody class="files">
-							</tbody>
-							</table>
-						</div>
-						<div class="reg-video-preview">
-							<iframe width="240" height="168" src="https://www.youtube.com/embed/K2cNqaPSHv0" frameborder="0" allowfullscreen></iframe>
-						</div>
-						<div class="form-filelink-top">
-							<div class="form-input">
-								<input type="text" name="reg_video_url" id="reg_video_url" value="http://"/>
-							</div>
-							<div class="form-filelink-top-file">
-								<div class="window-import-link">
-									<div class="fileinput-button">
-										<span>Загрузить файл</span>
-										<input type="file" name="files[]"/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="reg-form-b">
-					<div class="form-row clearfix">
-						<div class="form-item form-checkboxes">
-							<label for="reg_rules"><input type="checkbox" name="reg_rules" checked="checked" required />Согласен/на с передачей прав на использование и воспроизведение произведения</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-message form-message-error">
-					<div class="ttl">Ошибка</div>
-					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
-					<p>Не загружен аудиофайл</p>
-				</div>
-				<div class="form-message form-message-success">
-					<div class="ttl">Все прошло успешно</div>
-					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
-					<p>Не загружен аудиофайл</p>
-				</div>
-				<div class="form-footer">
-					<input class="button button-3" type="submit" value="Зарегистрироваться"/>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+<!-- Временный скрипт для открытия попапа. Его нужно убрать -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		openPopup("feedbackPopup")
+	})
+</script>
 
 <div class="popup feedback-popup popup-loading" id="feedbackPopup">
+	<div class="popup-loader">
+		<div class="loader-table">
+			<div class="loader-row">
+				<div class="loader-cell">
+					<div class="loader-pic"></div>
+					<div class="loader-ttl">Отправка формы</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="close"></div>
 	<div class="popup-content">
 		<div class="popup-ttl">Обратная связь</div>
