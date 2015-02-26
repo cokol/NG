@@ -4,6 +4,7 @@
 	
 		makeUp();
 		
+		
 		// Соцкнопки
 		
 		$(".page-share-arrows").click(function() {
@@ -958,16 +959,16 @@
       }
     });
 
-    $('.form-checkbox span input:checked').parent().addClass('checked');
-    $('.form-checkbox').click(function() {
-      $(this).find('span').toggleClass('checked');
-      $(this).find('input').prop('checked', $(this).find('span').hasClass('checked')).trigger('change');
-      if ($(this).find('span').hasClass('checked')) {
-        $('#main_registration form').removeClass('disabled');
-      } else {
-        $('#main_registration form').addClass('disabled');
-      }
-    });
+    // $('.form-checkbox span input:checked').parent().addClass('checked');
+    // $('.form-checkbox').click(function() {
+      // $(this).find('span').toggleClass('checked');
+      // $(this).find('input').prop('checked', $(this).find('span').hasClass('checked')).trigger('change');
+      // if ($(this).find('span').hasClass('checked')) {
+        // $('#main_registration form').removeClass('disabled');
+      // } else {
+        // $('#main_registration form').addClass('disabled');
+      // }
+    // });
 		
 		
 		$("form").each(function() {
@@ -1020,6 +1021,25 @@
     
 		hashHandle();
 
+		// Попапы с формами
+		
+		$("body").on("click",".popup-link",function() {
+			$("body").append("<div class='page-loader' />");
+			
+			$.get( $(this).data("href"), function(data) {
+				popupHtml = data;
+			}).done(function(data) {
+				var source = $("<div class='popups-wrapper'>"+popupHtml+"</div>");
+				var popup = source.find(".popup");
+				popup.addClass("popup-dynamic");
+				$("body").append(source);
+				$(".page-loader").remove();
+				initPopup();
+				openPopup(source.find(".popup").attr("id"));
+			});
+  
+		});
+		
   });
 
   $(window).bind('load resize scroll', function() {
@@ -1097,6 +1117,9 @@ function closePopup() {
   $(".tint").fadeTo(500,0,function() {
     $(this).remove();
   });
+	if ($(".popup-act").hasClass("popup-dynamic")) {
+		var remove = true;
+	}
   $(".popup-act").removeClass("popup-act").fadeTo(300,0,function() {
     $(this).hide();
 		if ($(this).hasClass("video-popup")) {
@@ -1107,6 +1130,10 @@ function closePopup() {
 		}
 		if ($(this).hasClass("simple-video-popup")) {
 			$(".simple-video-content iframe").remove();
+		}
+		if (remove) {
+			$(".popup-act").remove();
+			$(".popups-wrapper").remove();
 		}
   });
 }
@@ -1557,5 +1584,203 @@ function hashGo(obj) {
 		}
 	});
 	$("select").trigger("change");
+	
+}
+
+function initPopup() {
+  $(".popup-dynamic select").selectmenu({
+		change: function( event, ui ) {
+			console.log(ui.item.element)
+			ui.item.element.trigger("click");
+		}
+	});
+	$(".common-form .tooltip-link").each(function() {
+		var tooltipContent = $(this).next(".tooltip-cont").html();
+		$(this).qtip({ // Grab all elements with a non-blank data-tooltip attr.
+			content: tooltipContent,
+			position: {
+				at: 'right center',
+				my: 'left top',
+				adjust: {
+					x: 20
+				}
+			},
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: {
+				event: 'unfocus'
+			}
+		});
+	})
+	
+	$( ".popup-dynamic input[type=checkbox], input[type=radio]").iCheck();
+		
+	// Зависимые селекты
+	
+	$(".popup-dynamic select").filter(function() {
+		return $(this).data("childselect")
+	}).each(function() {
+		var parentSelect = $(this);
+		var childSelect = $("select#"+$(this).data("childselect"));
+		childSelect.find("option").filter(function() {
+			return $(this).data("parentval") != parentSelect.val() && $(this).attr("value") != "all"
+		}).attr("disabled",true)
+		parentSelect.selectmenu({
+			change: function( event, ui ) {
+				childSelect.find("option").attr("disabled",false).filter(function() {
+					return $(this).data("parentval") != parentSelect.val()
+				}).attr("disabled",true);
+				childSelect.val("all")
+				childSelect.selectmenu("refresh");
+			}
+		});
+
+		parentSelect.trigger("change");
+		
+		
+	})
+	
+	if ($(".popup-dynamic input:text").length) {
+			$(".popup-dynamic input:text").each(function() {
+				if ($(this).val()) {
+					$(this).prev(".placeholder").hide();
+				}
+			});
+		}
+
+		$(".popup-dynamic input.phone").mask("+7 (999) 999-99-99");
+
+		$(".popup-dynamic input:text, .popup-dynamic input:password, .popup-dynamic textarea").each(function() {
+			$(this).addClass("initial");
+			
+			if ($(this).prop("tagName") == "INPUT" || $(this).prop("tagName") == "TEXTAREA") {
+				// if (!$(this).parents(".input-wrapper").length) $(this).wrap("<div class='input-wrapper'></div>");
+				if ($(this).hasClass("phone") || $(this).hasClass("form-date")) {
+					$(this).focus(function() {
+						$(this).removeClass("initial");
+						$(this).parents(".form-item").find(".placeholder").hide();
+					});
+				} else {
+					$(this).focus(function() {
+						$(this).parents(".form-item").find(".placeholder").addClass("placeholder-initial");
+					});
+					$(this).keydown(function() {
+						$(this).removeClass("initial");
+						$(this).parents(".form-item").find(".placeholder").hide();
+					});
+				}
+				$(this).blur(function() {
+					$(this).prev().prev(".placeholder").hide();
+					$(this).parents(".form-item").find(".placeholder").removeClass("placeholder-initial");
+					if (!$(this).val()) {
+						$(this).addClass("initial");
+						$(this).parents(".form-item").find(".placeholder").show();
+					}
+				});
+			} else {
+				$(this).focus(function() {
+					$(this).removeClass("initial");
+					$(this).parents(".form-item").find(".placeholder").hide();
+				});
+				$(this).blur(function() {
+					if (!$(this).val()) {
+						$(this).addClass("initial");
+						$(this).parents(".form-item").find(".placeholder").show();
+					}
+				});
+			}
+				
+			$(this).parents(".form-item").find(".placeholder").click(function() {
+				$(this).focus();
+			});
+			
+		});
+		
+		$('.popup-dynamic #fileupload-foto').fileupload({
+      url: 'js/jquery.fileupload/server/php/',
+      acceptFileTypes: /(\.|\/)(jpg)$/i,
+      autoUpload: true,
+      start: function() {
+        $('#main_registration form').addClass('disabled');
+      },
+      stop: function() {
+        $('#main_registration form').removeClass('disabled');
+      }
+    });
+
+    $('.popup-dynamic #fileupload-audio').fileupload({
+      url: 'js/jquery.fileupload/server/php/',
+      acceptFileTypes: /(\.|\/)(mp3|wav)$/i,
+      autoUpload: true,
+      start: function() {
+        $('#main_registration form').addClass('disabled');
+      },
+      stop: function() {
+        $('#main_registration form').removeClass('disabled');
+      }
+    });
+
+    $('.popup-dynamic #fileupload-video').fileupload({
+      url: 'js/jquery.fileupload/server/php/',
+      acceptFileTypes: /(\.|\/)(mp4|avi)$/i,
+      autoUpload: true,
+      start: function() {
+        $('#main_registration form').addClass('disabled');
+      },
+      stop: function() {
+        $('#main_registration form').removeClass('disabled');
+      }
+    });
+		
+		$(".popup-dynamic form").each(function() {
+			$(this).validate({
+				submitHandler: function(form) {
+					if (!$('#main_registration form').hasClass('disabled')) {
+						// форму можно отправить
+						//alert('Форма отправлена');
+					} else {
+						// форму не отправляем
+						//alert('Форма не отправлена');
+					}
+				},
+				errorPlacement: function(error, element) {
+					if (element.data("errortext")) {
+						error.html(element.data("errortext"))
+					}
+					if (element.attr("type") == "checkbox") {
+						errorContainer = element.parents("label").parent().children().last();
+					} else if (element.attr("type") == "radio") {
+						errorContainer = element.parents("label").parent().children().last();
+					} else {
+						errorContainer = element
+					}
+					
+					error.insertAfter(errorContainer).css({
+						marginTop: -error.outerHeight()/2
+					});
+					error.wrap("<div class='error-wrapper' />");
+					if (element[0].tagName == "SELECT") {
+						element.siblings(".ui-selectmenu-button").addClass("error").removeClass("valid");
+					}
+					
+				},
+				highlight: function(element, errorClass, validClass) {
+					$(element).removeClass("valid").addClass("error");
+					if ($(element)[0].tagName == "SELECT") {
+						$(element).siblings(".ui-selectmenu-button").addClass("error").removeClass("valid");
+					}
+				},
+				unhighlight: function(element, errorClass, validClass) {
+					$(element).addClass("valid").removeClass("error");
+					if ($(element)[0].tagName == "SELECT") {
+						$(element).siblings(".ui-selectmenu-button").removeClass("error").addClass("valid");
+					}
+				}
+			});
+		
+		});
+    
 	
 }

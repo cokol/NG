@@ -172,7 +172,7 @@ textarea.valid {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 260px !important;
-	border: 2px solid #d2d5db;
+	border:2px solid #d1dee5;
 	font-size: 18px;
 	color: #393939;
 	padding: 0 10px;
@@ -181,7 +181,11 @@ textarea.valid {
 	display: block;
 	background: #fff;
 	padding: 0;
-float: left;
+	float: left;
+}
+
+.filter-form .ui-selectmenu-button {
+	border: 2px solid #d2d5db;
 }
 
 .ui-selectmenu-button span.ui-icon {

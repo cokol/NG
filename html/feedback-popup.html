@@ -1,0 +1,104 @@
+﻿<div class="popup feedback-popup" id="feedbackPopup">
+	<div class="close"></div>
+	<div class="popup-content">
+		<div class="popup-ttl">Обратная связь</div>
+		<p>Создание приверженного покупателя переворачивает пул лояльных изданий. Такое понимание ситуации восходит к Эл Райс, при этом маркетингово-ориентированное издание деятельно детерминирует комплексный повторный контакт, учитывая современные тенденции.</p>
+		<div class="common-form feedback-form clearfix">
+			<form action="#" method="post" enctype="multipart/form-data">
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_name">ФИО&nbsp;<span class="req">*</span></label>
+						<input type="text" name="feedback_name" id="feedback_name" data-errortext="Текст, для ошибки, который указан в атрибуте data-errortext. Если он есть, то показывается этот текст" required />
+						<div class="form-hint">
+							Например: Иван Петров
+						</div>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_questiontype">Тип вопроса&nbsp;<span class="req">*</span></label>
+						<select name="feedback_questiontype" id="feedback_questiontype" required >
+							<option value="">Выберите</option>
+							<option value="1">Классика</option>
+							<option value="2">Рок</option>
+							<option value="3">Поп</option>
+							<option value="4">Рэп</option>
+							<option value="5">Кавер</option>
+						</select>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_phone">Телефон</label>
+						<input type="text" name="feedback_phone" id="feedback_phone" class="phone" />
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_email">Электронная почта&nbsp;<span class="req">*</span></label>
+						<input type="text" name="feedback_email" id="feedback_email" class="email" required />
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item">
+						<label for="feedback_message">Ваше обращение&nbsp;<span class="req">*</span></label>
+						<textarea name="feedback_message" id="feedback_message" rows="4" required></textarea>
+						<div class="tooltip-link">?</div>
+						<div class="tooltip-cont">
+							<p>Адекватная ментальность раскручивает рекламный макет. Исходя из структуры пирамиды Маслоу, рыночная ситуация синхронизирует имидж. Маркетинг довольно хорошо сбалансирован.</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-row clearfix">
+					<div class="form-item form-radios">
+						<div class="radios-label">Каждый фазан желает знать:</div>
+						<div class="radio-items clearfix">
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- где</label>
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- сидит</label>
+							<label for="feedback_radio"><input type="radio" name="feedback_radio" required />- охотник</label>
+						</div>
+					</div>
+				</div>
+				<div class="feedback-form-b">
+					<div class="form-row clearfix">
+						<div class="form-item form-checkboxes">
+							<label for="feedback_rules"><input type="checkbox" name="feedback_rules" checked="checked" required />С <a href="#">политикой конфиденциальности</a> ознакомлен и согласен</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-message form-message-error">
+					<div class="ttl">Ошибка</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-message form-message-success">
+					<div class="ttl">Все прошло успешно</div>
+					<p>Поле «Фамилия» должно иметь максимальную длину в 100 символов, включая пробелы. Допустимые символы: буквы русского и английского алфавитов, тире, апостроф. Другие спецсимволы недопустимы.</p>
+					<p>Не загружен аудиофайл</p>
+				</div>
+				<div class="form-footer">
+					<input class="button button-3" type="submit" value="Отправить"/>
+				</div>
+				<div class="form-req-hint">
+					<span class="req">*</span> &mdash; Поля, обязательные для заполнения
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
