@@ -19,7 +19,7 @@
 
 html {min-width:1000px; height:100%}
 
-body {min-width:1000px; height:100%; margin:0; padding:0; font:300 14px/18px "Open Sans", sans-serif; color:#393939; background:#fff}
+body {min-width:1000px; height:100%; margin:0; padding:0; font:400 14px/18px "Open Sans", sans-serif; color:#393939; background:#fff}
 
 strong {font-weight:bold}
 
@@ -1005,6 +1005,10 @@ form.disabled .form-submit {opacity:.5; filter:progid:DXImageTransform.Microsoft
 	top: 3px;
 }
 
+.filter-button-trigger {
+  width:176px;
+}
+
 .filter-button-trigger:before {
   content:"";
 	width:16px;
@@ -1195,7 +1199,7 @@ nav .submenu {
 	margin:0;
 	padding:10px;
 	z-index:110;
-	min-width:150px;
+	min-width:195px;
 }
 
 nav li:hover ul {
@@ -1247,6 +1251,10 @@ nav ul.submenu li {
 	background:#000;
 	position:relative;
 	z-index:90;
+}
+
+.main-slider .slide .center-wrapper {
+  opacity:0;
 }
 
 .main-slider .slide {
@@ -1634,7 +1642,7 @@ nav ul.submenu li {
   width:620px;
 	float:left;
 	text-align:center;
-	font-size:18px;
+	font-size:17px;
 	line-height:21px;
 	color:#393939;
 	font-weight:normal;
@@ -1808,7 +1816,7 @@ nav ul.submenu li {
   filter: url('filters.svg#grayscale'); /* Firefox 3.5+ */
 	filter: gray; /* IE6-9 */
 	-webkit-filter: grayscale(1); /* Webkit Nightlies & Google Chrome Canary */
-	transition:all .2s ease;
+	transition:all .75s ease;
 }
 
 .experts-item:hover .pic img,
@@ -3098,6 +3106,11 @@ nav ul.submenu li {
 	text-transform: uppercase;
 }
 
+.video-slider .video-item:hover {
+	padding: 8px;
+	border: 2px solid #f60800;
+}
+
 .video-slider .video-item:hover .ttl {
   text-decoration:underline;
 }
@@ -3176,7 +3189,8 @@ nav ul.submenu li {
 }
 
 .news-item:hover {
-  text-decoration:none !important;
+	text-decoration:none !important;
+	outline: 2px solid #f60800;
 }
 
 .news-item-big {
@@ -3308,11 +3322,20 @@ nav ul.submenu li {
 	margin-left: -560px;
 }
 
+.news-header .back-link:hover{
+	background:#ec2327;
+	color:#fff;
+}
+
+.news-header .back-link:hover:before{
+	background: url('../images/back-link-arrow-white.png') 0 0 no-repeat;
+}
+
 .news-header .back-link:before {
   content: "";
 	width: 9px;
 	height: 15px;
-	background: url(../images/back-link-arrow.png) 0 0 no-repeat;
+	background: url('../images/back-link-arrow.png') 0 0 no-repeat;
 	position: absolute;
 	left: 20px;
 	top: 8px;
@@ -3875,6 +3898,7 @@ nav ul.submenu li {
 	font-size:14px;
 	line-height:18px;
 	font-weight:300;
+	background: #1f0a1c;
 }
 
 .participants-tiles .pic {
@@ -3912,7 +3936,7 @@ nav ul.submenu li {
 .participants-tiles .participant-name {
   color:#fff;
 	font-family:ProximaNovaBold;
-	font-size:36px;
+	font-size:28px;
 	line-height:36px;
 	padding:0;
 	margin:0;
@@ -4475,7 +4499,7 @@ ul.list-alt li:before {
 }
 
 .faq-content p {
-  margin:0 0 18px 0;
+  margin:0 0 5px 0;
 }
 
 .content .faq-menu {
@@ -4499,14 +4523,14 @@ ul.list-alt li:before {
 }
 
 .faq-menu a.act {
-  background:#f5f5f5;
-	color:#000;
+  background:#ec2327;
+	color:#fff;
 	text-decoration:none;
 }
 
 .faq-item {
   margin: 0 0 23px 0;
-	padding: 0 0 11px 0;
+	padding: 0 0 23px 0;
 	border-bottom: 1px solid #e8e8e8;
 }
 
@@ -4515,11 +4539,11 @@ ul.list-alt li:before {
 }
 
 .faq-question {
-  font-family:ProximaNovaBold;
+	font-family:ProximaNovaBold;
 	font-size:18px;
 	line-height:18px;
 	min-height:24px;
-	padding:2px 0 0 32px;
+	padding:2px 0 11px 32px;
 	background:url(../images/ico-faq-question.png) 0 0 no-repeat;
 }
 
@@ -4950,3 +4974,54 @@ a.vote-fb span {background-position:-28px -63px}
 #main_votes {position:relative; z-index:6}
 #main_votes .participants-votes {margin-top:54px}
 .main-votes-all {text-align:center; padding:8px 0 81px 0}
+
+/*css.additional.*/
+.popup-loader{display:none;}
+.popup-content input[name="name"]{display:none;}
+
+.hint-left{
+  padding:0;
+  margin: -10px 0 15px;
+}
+
+.center-wrapper {position: relative}
+
+.slide-1-grant {
+	position: absolute;
+	top: 428px;
+	left: 0px;
+	font-family: ProximaNovaRegular,sans-serif;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 16px 160px 0px 220px;
+	background: url("../images/rf-gerb.png") no-repeat scroll 165px 12px transparent;
+	line-height: 15px;
+}
+
+#main_registration {
+	margin:-74px 0 -41px 0;
+}
+
+.participants-votes .participant-item{height: 370px}
+.participants-votes .participants-votes-title{  font-size: 18px; color: #fff; font-family: ProximaNovaBold; text-transform: uppercase; padding-top: 30px;}
+.participants-votes-links {text-align:center; padding:14px 0 0 0}
+
+.participants-votes .name-geo .cont { height: 72px;}
+
+.header-top-offset {
+  margin-bottom:54px;
+}
+
+.header-bottom-fixed {
+  position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	background:#17191c;
+	z-index:100;
+	min-width:990px;
+}
+
+.jp-details {
+  pointer-events:none;
+}

@@ -1,10 +1,66 @@
 (function($) {
-
-  $(document).ready(function() {
 	
+  /*bil центровка контактов*/
+  $(window).bind('load', function() {
+    $('.map-inner').css({'margin': '-' + ($('.map-inner').height() / 2) + 'px 0 0 -' + ($('.map-inner').width() / 2) + 'px'});
+  });   
+  /*eof_bil*/
+  $(document).ready(function() {
+	  /*bil*/
+      $("#main_experts a").click(function(e){
+        e.preventDefault();
+      });      
+      $(".header-feedback-button .button-2").click(function(e){
+        openPopup('feedbackPopup');
+        e.preventDefault();
+      });
+      $(document).on("submit","#feedForm",function(e){
+        $(".popup-loader").show();
+        e.preventDefault();
+        var href   = $(this).attr('action');
+        var method = $(this).attr('method');
+  			$.ajax({
+  				url: href,
+  				dataType: 'json',
+  				data: $(this).serialize(),
+  				cache: false,
+  				type: method
+  			}).done(function(ret) {
+          $(".popup-loader").hide();
+          if(ret.s == 1){
+            $(this).remove();
+            $(".feedback-form").html('<div class="form-message form-message-success"><div class="ttl">Все прошло успешно</div>'+ret.m+'</div>');
+          }else{
+            $(".form-message.form-message-error").remove();
+            $(".form-row-first").prepend('<div class="form-message form-message-error"><div class="ttl">Ошибка</div>'+ret.m+'</div>');
+          }
+  			});
+      });
+      $(document).on("submit","#regForm",function(e){
+        $(".popup-loader").show();
+        e.preventDefault();
+        var href   = $(this).attr('action');
+        var method = $(this).attr('method');
+  			$.ajax({
+  				url: href,
+  				dataType: 'json',
+  				data: $(this).serialize(),
+  				cache: false,
+  				type: method
+  			}).done(function(ret) {
+          $(".popup-loader").hide();
+          if(ret.s == 1){
+            $(this).remove();
+            $(".reg-form").html('<div class="form-message form-message-success"><div class="ttl">Все прошло успешно</div>'+ret.m+'</div>');
+          }else{
+            $(".form-message.form-message-error").remove();
+            $(".form-row-first").prepend('<div class="form-message form-message-error"><div class="ttl">Ошибка</div>'+ret.m+'</div>');
+          }
+  			});
+      });      
+    /*eof_bil*/
 		makeUp();
-		
-		
+
 		// Соцкнопки
 		
 		$(".page-share-arrows").click(function() {
@@ -80,9 +136,10 @@
 		// Переход по анкорам
 		
 		$("a").click(function() {
-			if ($("a[name='"+$(this).attr("href")+"']").length) {
+			var hrefArr = $(this).attr("href").split("#");
+			if ($("a[name='"+hrefArr[1]+"']").length) {
 				$("html,body").animate({
-					scrollTop: $("a[name='"+$(this).attr("href")+"']").offset().top
+					scrollTop: $("a[name='"+hrefArr[1]+"']").offset().top
 				},1000)
 				return false;
 			}
@@ -313,7 +370,7 @@
 		
 		
 		// Попап с видео на детальной странице участника
-		
+		/*
 		$(".simple-video-link").click(function() {
 			$(".simple-video-popup .simple-video-content").html("<iframe width='100%' height='400' src='"+$(this).attr("href")+"' frameborder='0' allowfullscreen></iframe>")
 			
@@ -373,7 +430,7 @@
 			
 			return false;
 		});
-		
+
 		$(".simple-video-popup .video-next").click(function() {
 
 			if ($(".participants-list .participant-item.act").nextAll(".participant-item").filter(function () {
@@ -484,7 +541,7 @@
 			
 		});
 		
-		
+		 		*/
 		
 		
 		// Селекты и чекбоксы
@@ -625,7 +682,8 @@
 				
 				$(this).addClass("act");
 			
-				var url = $(this).attr("href");
+				//var url = $(this).attr("href");
+        var url = '/ajax/news-list.php?PAGEN_1='+$(this).attr("rel");
 				
 				container.html("<div class='paged-content-loader' />");
 				
@@ -657,7 +715,7 @@
 			
 		})
 		
-		// Экспертный совет
+    // Экспертный совет
 		
 		$(".item-expandable").on("click",function() {
 			if (!$(this).hasClass("item-expandable-expanded")) {
@@ -697,7 +755,7 @@
 			}
 			
 		});
-		
+	
 		// Видео на главной, клик на превью
 		
 		$("body").on("click",".video-item",function() {
@@ -871,6 +929,11 @@
 		// Слайдер на главной
 		
 		if ($(".main-slider").length) {
+			$('.main-slider').on('init', function(slick){
+        $(".main-slider .slide .center-wrapper").css({
+					opacity: 1
+				});
+      });
 		
 			$(".main-slider").slick({
 				dots: true,
@@ -881,6 +944,7 @@
 				prevArrow: '<button type="button" class="slick-prev"></button>',
 				nextArrow: '<button type="button" class="slick-next"></button>'
 			});
+			
 		
 			// Навигация слайдера
 			
@@ -959,18 +1023,6 @@
       }
     });
 
-    // $('.form-checkbox span input:checked').parent().addClass('checked');
-    // $('.form-checkbox').click(function() {
-      // $(this).find('span').toggleClass('checked');
-      // $(this).find('input').prop('checked', $(this).find('span').hasClass('checked')).trigger('change');
-      // if ($(this).find('span').hasClass('checked')) {
-        // $('#main_registration form').removeClass('disabled');
-      // } else {
-        // $('#main_registration form').addClass('disabled');
-      // }
-    // });
-		
-		
 		$("form").each(function() {
 			$(this).validate({
 				submitHandler: function(form) {
@@ -981,6 +1033,7 @@
 						// форму не отправляем
 						//alert('Форма не отправлена');
 					}
+          if(form.hasClass('nvld')) return true;
 				},
 				errorPlacement: function(error, element) {
 					if (element.data("errortext")) {
@@ -1019,10 +1072,8 @@
 		
 		});
     
-		hashHandle();
+    hashHandle();
 
-		// Попапы с формами
-		
 		$("body").on("click",".popup-link",function() {
 			$("body").append("<div class='page-loader' />");
 			
@@ -1039,19 +1090,28 @@
 			});
   
 		});
-		
+    
   });
 
   $(window).bind('load resize scroll', function() {
     var curScroll = $(window).scrollTop();
     var curHeight = $(window).height() / 2;
-    $('nav a').each(function() {
+    $('nav a').each(function(){
       var curBlock = $(this).attr('href');
       if ($(curBlock).length > 0 && $(curBlock).offset().top < (curScroll + curHeight)) {
         $('nav li.active').removeClass('active');
         $(this).parent().addClass('active');
       }
     });
+		
+		if (curScroll >= $(".header-top").height()) {
+			$(".header-top").addClass("header-top-offset")
+			$(".header-bottom").addClass("header-bottom-fixed")
+		} else {
+			$(".header-top").removeClass("header-top-offset")
+			$(".header-bottom").removeClass("header-bottom-fixed")
+		}
+		
   });
 
   $(window).load(function() {
@@ -1196,7 +1256,7 @@ function videoPopup(videoId) {
 	
 		$("body").append("<div class='page-loader' />");
 		
-		$.get( "html/video-popup.html", function(data) {
+		$.get( "/ajax/video.php", function(data) {
 			popupHtml = data;
 		}).done(function() {
 			$("body").append(popupHtml);
@@ -1299,12 +1359,13 @@ function paginatorMakeup(items) {
 	
 }
 
+
 function validateForms() {
   
   $("form").each(function() {
     $(this).validate({
       focusInvalid: false,
-      sendForm : false,
+      sendForm : true,
       errorPlacement: function(error, element) {
         // element.parents(".input-wrapper").addClass("input-wrapper-error");
         if (element.attr("errortext")) {
@@ -1697,31 +1758,41 @@ function initPopup() {
 			});
 			
 		});
-		
+		var hash = $("#upHash").val();
+    var f_suf = ''; 
+    var a_suf = ''; 
+    var f_hash = '';
+    var a_hash = '';
+    if(hash){
+      f_suf = '?hash=photo'+hash;
+      a_suf = '?hash=audio'+hash;
+    }
 		$('.popup-dynamic #fileupload-foto').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
-      acceptFileTypes: /(\.|\/)(jpg)$/i,
+      url: '/layout/js/jquery.fileupload/server/php/'+f_suf,
+      acceptFileTypes: /(\.|\/)(jpg|jpeg|png)$/i,
       autoUpload: true,
       start: function() {
         $('#main_registration form').addClass('disabled');
       },
       stop: function() {
         $('#main_registration form').removeClass('disabled');
-      }
+      },
+			maxNumberOfFiles: 1
     });
 
     $('.popup-dynamic #fileupload-audio').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
-      acceptFileTypes: /(\.|\/)(mp3|wav)$/i,
+      url: '/layout/js/jquery.fileupload/server/php/'+a_suf,
+      acceptFileTypes: /(\.|\/)(mp3)$/i,
       autoUpload: true,
       start: function() {
         $('#main_registration form').addClass('disabled');
       },
       stop: function() {
         $('#main_registration form').removeClass('disabled');
-      }
+      },
+			maxNumberOfFiles: 1
     });
-
+    /*
     $('.popup-dynamic #fileupload-video').fileupload({
       url: 'js/jquery.fileupload/server/php/',
       acceptFileTypes: /(\.|\/)(mp4|avi)$/i,
@@ -1732,19 +1803,11 @@ function initPopup() {
       stop: function() {
         $('#main_registration form').removeClass('disabled');
       }
-    });
+    });*/
 		
 		$(".popup-dynamic form").each(function() {
 			$(this).validate({
-				submitHandler: function(form) {
-					if (!$('#main_registration form').hasClass('disabled')) {
-						// форму можно отправить
-						//alert('Форма отправлена');
-					} else {
-						// форму не отправляем
-						//alert('Форма не отправлена');
-					}
-				},
+
 				errorPlacement: function(error, element) {
 					if (element.data("errortext")) {
 						error.html(element.data("errortext"))
