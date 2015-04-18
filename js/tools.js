@@ -136,10 +136,10 @@
 		// Переход по анкорам
 		
 		$("a").click(function() {
-			var hrefArr = $(this).attr("href").split("#");
-			if ($("a[name='"+hrefArr[1]+"']").length) {
+			var hrefArr = $(this).attr("href").replace("/#","");
+			if ($("a[name='"+hrefArr+"']").length) {
 				$("html,body").animate({
-					scrollTop: $("a[name='"+hrefArr[1]+"']").offset().top
+					scrollTop: $("a[name='"+hrefArr+"']").offset().top
 				},1000)
 				return false;
 			}
@@ -988,7 +988,7 @@
     //$('.form-select select').chosen({disable_search: true});
 
     $('#fileupload-foto').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
+      url: 'js/jquery.fileupload/server/php/index.php',
       acceptFileTypes: /(\.|\/)(jpg)$/i,
       autoUpload: true,
       start: function() {
@@ -1000,7 +1000,7 @@
     });
 
     $('#fileupload-audio').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
+      url: 'js/jquery.fileupload/server/php/index.php',
       acceptFileTypes: /(\.|\/)(mp3|wav)$/i,
       autoUpload: true,
       start: function() {
@@ -1012,7 +1012,7 @@
     });
 
     $('#fileupload-video').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
+      url: 'js/jquery.fileupload/server/php/index.php',
       acceptFileTypes: /(\.|\/)(mp4|avi)$/i,
       autoUpload: true,
       start: function() {
@@ -1097,7 +1097,7 @@
     var curScroll = $(window).scrollTop();
     var curHeight = $(window).height() / 2;
     $('nav a').each(function(){
-      var curBlock = $(this).attr('href');
+      var curBlock = $("a[name='"+$(this).attr('href').replace("/#","")+"']");
       if ($(curBlock).length > 0 && $(curBlock).offset().top < (curScroll + curHeight)) {
         $('nav li.active').removeClass('active');
         $(this).parent().addClass('active');
@@ -1768,7 +1768,7 @@ function initPopup() {
       a_suf = '?hash=audio'+hash;
     }
 		$('.popup-dynamic #fileupload-foto').fileupload({
-      url: '/layout/js/jquery.fileupload/server/php/'+f_suf,
+      url: '/layout/js/jquery.fileupload/server/php/index.php'+f_suf,
       acceptFileTypes: /(\.|\/)(jpg|jpeg|png)$/i,
       autoUpload: true,
       start: function() {
@@ -1781,7 +1781,7 @@ function initPopup() {
     });
 
     $('.popup-dynamic #fileupload-audio').fileupload({
-      url: '/layout/js/jquery.fileupload/server/php/'+a_suf,
+      url: '/layout/js/jquery.fileupload/server/php/index.php'+a_suf,
       acceptFileTypes: /(\.|\/)(mp3)$/i,
       autoUpload: true,
       start: function() {
@@ -1794,7 +1794,7 @@ function initPopup() {
     });
     /*
     $('.popup-dynamic #fileupload-video').fileupload({
-      url: 'js/jquery.fileupload/server/php/',
+      url: 'js/jquery.fileupload/server/php/index.php',
       acceptFileTypes: /(\.|\/)(mp4|avi)$/i,
       autoUpload: true,
       start: function() {

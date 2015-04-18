@@ -5025,3 +5025,125 @@ a.vote-fb span {background-position:-28px -63px}
 .jp-details {
   pointer-events:none;
 }
+
+/* #fileupload-foto .progress {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ffb0b0;
+	float:left;
+	-webkit-transform:rotate(-90deg);
+	transform:rotate(-90deg);
+	position:relative;
+}
+
+#fileupload-foto .progress-bar {
+  background: #ffd7d7;
+  height: 50px;
+	float:left;
+}
+
+#fileupload-foto .files-item-name {
+  padding:0;
+	margin:0;
+}
+
+#fileupload-foto .files-item-name>span {
+  display:none;
+}
+
+#fileupload-foto .delete {
+  display:none;
+}
+
+#fileupload-foto .fu-tmb {
+	height:54px;
+	margin:0 10px 10px 0;
+	float:left;
+	position:relative;
+}
+
+#fileupload-foto .fu-tmb:hover:before {
+	content:"";
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+  background:url(../images/ico-remove-file.png) center center no-repeat, url(../images/tint.png);
+	cursor:pointer;
+}
+
+#fileupload-foto .fu-tmb img {
+	height:54px;
+	display:block;
+}
+
+#fileupload-foto .files-list td {
+  padding:0;
+}
+
+#fileupload-foto .fileinput-button {
+  width:54px;
+	height:54px;
+	background:url(../images/file-add.png) 0 0 no-repeat;
+	text-indent:-10000px;
+	float:left;
+	margin:0 10px 10px 0;
+	border:none;
+	padding:0;
+}
+
+#fileupload-foto .files-list {
+  zoom:1;
+	float:left;
+}
+
+#fileupload-foto .files-list:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+
+#fileupload-foto .window-import-link {
+  float:left;
+	width:auto;
+}
+
+#fileupload-foto .files-item-stop {
+  background: url(../images/ico-remove-file.png) center center no-repeat;
+  margin: 17px 0 0 -36px;
+  cursor: pointer;
+  position: relative;
+}
+
+#fileupload-foto .files-item-error {
+  float: none;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ea0800;
+  padding: 0 10px 0 12px;
+  max-width: 170px;
+  height: 54px;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+#fileupload-foto .template-download {
+  float:left;
+	display:block;
+} */
+
+.popup #fileupload-audio .files-item-name {
+  margin: 0;
+  padding: 0;
+  height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 240px;
+}
+
+.popup #fileupload-audio .files-item-name span {
+  white-space:nowrap;
+}
