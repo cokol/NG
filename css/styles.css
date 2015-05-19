@@ -5147,3 +5147,47 @@ a.vote-fb span {background-position:-28px -63px}
 .popup #fileupload-audio .files-item-name span {
   white-space:nowrap;
 }
+
+#main_abakumov {padding:55px 0 0 0}
+.abakumov-text {font-size:16px; line-height:21px; padding:11px 0 0 6px; margin:0 0 -10px 0; color:#010101}
+.abakumov-text:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.abakumov-text img {float:left; margin:26px 22px 0 0}
+.abakumov-text p {margin:21px 0; padding:0}
+
+.nominees-header {width:100%}
+.nominees-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.nominees-title {float:left; font-weight:bold; color:#17191c; font:24px/26px ProximaNovaBold, sans-serif; text-transform:uppercase}
+.nominees-menu {float:right}
+.nominees-menu ul {margin:0; padding:0; list-style:none}
+.nominees-menu ul li {float:left; margin:0; padding:0 0 0 2px; background:none}
+.nominees-menu ul li a {float:left; text-decoration:none; color:#9a9aa6; font:12px/22px ProximaNovaBold, sans-serif; text-transform:uppercase; border:2px solid #c7c8cf; padding:0 20px}
+.nominees-menu ul li a:hover,
+.nominees-menu ul li.active a {background:#9a9aa6; color:#fff; border-color:#9a9aa6; text-decoration:none}
+
+.nominees-list {border-top:2px solid #f60800; margin:38px 0 0 0}
+.nominee {width:100%; border-bottom:1px solid #e8e8e8; padding:0 0 17px 0}
+.nominee:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.nominee-photo {float:left; width:78px; position:relative; padding:23px 26px 0 6px}
+.nominee-photo img {position:relative; -moz-border-radius:39px; -webkit-border-radius:39px; border-radius:39px; behavior:url(./js/PIE.htc)}
+.nominee-photo:after {content:""; display:block; width:89px; height:85px; background:url(../images/nominee-photo.png); position:absolute; left:0; top:21px}
+.nominee-content {float:left; width:610px}
+.nominee-name {text-transform:uppercase; font:14px/18px ProximaNovaBold, sans-serif; padding:19px 0 0 0}
+.nominee-name a {color:#070707; text-decoration:none}
+.nominee-name a:hover {text-decoration:underline}
+.nominee-title {color:#070707; font-size:14px; line-height:18px; font-style:italic}
+.nominee-info {font-size:12px; line-height:18px; white-space:nowrap; margin:17px 0 0 -30px; position:relative}
+.nominee-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.nominee-info-item {float:left; margin:0 0 0 30px}
+.nominee-info-item-genre {padding:0 0 0 20px; background:url(../images/nominee-info-item-genre.png) no-repeat left center}
+.nominee-info-item-lyrics {padding:0 0 0 21px; background:url(../images/nominee-info-item-lyrics.png) no-repeat left center}
+.nominee-info-item-music {padding:0 0 0 21px; background:url(../images/nominee-info-item-music.png) no-repeat left center}
+.nominee-info-item-country {padding:0 0 0 20px; background:url(../images/nominee-info-item-country.png) no-repeat left center}
+.nominee-info-item-district {padding:0 0 0 26px; background:url(../images/nominee-info-item-district.png) no-repeat left center}
+.nominee-info-item-city {padding:0 0 0 22px; background:url(../images/nominee-info-item-city.png) no-repeat left center}
+.nominee-media {float:right; width:168px; display:table; margin:19px 0 0 0; background:#cdcdcd; font:10px/12px ProximaNovaBold, sans-serif; text-transform:uppercase}
+.nominee-media-inner {display:table-cell; height:90px; vertical-align:middle; text-align:center}
+.nominee-media-inner a {display:inline-block; vertical-align:top; color:#fff; text-decoration:none}
+.nominee-media-inner a img {display:block; margin:0 auto 4px auto}
+.nominee-media-inner a:hover {text-decoration:none}
+.nominee-media-inner a:hover span {text-decoration:underline}
+.nominee-media-inner strong {display:inline-block; vertical-align:top; width:8px; height:7px; background:url(../images/nominee-media-sep.png); margin:11px 2px 0 2px}
